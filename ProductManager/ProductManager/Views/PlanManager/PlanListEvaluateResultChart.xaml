@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="ProductManager.Views.PlanManager.PlanListEvaluateResultChart"
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Width="800"  Height="400">
+
+    <Grid x:Name="LayoutRoot" Background="White" >
+        <toolkit:Chart x:Name="EvaluateResult" Title="计划评估结果" >
+            <toolkit:Chart.Axes>
+                <toolkit:CategoryAxis Title="计划节点" Orientation="Y"/>
+                <toolkit:LinearAxis Title="完成率"  Orientation="X" Minimum="0" Maximum="100" Interval="10" ShowGridLines="True"  />
+            </toolkit:Chart.Axes>
+            <toolkit:BarSeries Title="%" ItemsSource="{Binding}" IndependentValuePath="Key" DependentValuePath="Value">
+            </toolkit:BarSeries>
+        </toolkit:Chart>
+    </Grid>
+</UserControl>

@@ -1,0 +1,45 @@
+﻿<navigation:Page xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"  xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+                 x:Class="ProductManager.Views.ProductManagers.ResponsiblePersonList" 
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           mc:Ignorable="d"
+           xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+           d:DesignWidth="640" d:DesignHeight="480"
+           Title="ResponsiblePersonList Page">
+    <Grid x:Name="LayoutRoot">
+        <toolkit:BusyIndicator x:Name="BusyIndicator" IsBusy="{Binding IsBusy}" BusyContent="请稍候..." FontSize="13">
+            <Grid Margin="0">
+                <Border>
+                    <StackPanel Margin="0,0,0,0" Height="33" VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="33" VerticalAlignment="Top">
+                            <CheckBox Margin="2" Content="过滤"  IsChecked="{Binding IsFilter, Mode=TwoWay}" />
+                            <ComboBox Margin="2" Width="90" ItemsSource="{Binding FilterList}" IsEnabled="{Binding IsFilter}" SelectedItem="{Binding SelectList, Mode=TwoWay}"/>
+                            <TextBox Margin="2,2,2,0" Text="{Binding FilterContent, Mode=TwoWay}" IsEnabled="{Binding IsFilter}" VerticalAlignment="Top" Width="110"/>
+                            <CheckBox Margin="2" Content="只显示未发运"  IsChecked="{Binding IsNotOutput, Mode=TwoWay}" />
+                            <Button Margin="2" Content="刷新" Width="45" Style="{StaticResource GreenButton}" Command="{Binding OnRefash}"/>
+                            <Button Margin="2" Content="导出" Width="45" Style="{StaticResource GreenButton}" Command="{Binding OnExport}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <sdk:DataGrid AutoGenerateColumns="False"
+                    Margin="0,36,0,0"
+                    ItemsSource="{Binding ResponsiblePersonEntityList}"
+                    SelectionMode="Single"
+                    HeadersVisibility="All"
+                    GridLinesVisibility="All"
+                    FrozenColumnCount="2">
+                    <sdk:DataGrid.Columns>
+                        <sdk:DataGridTextColumn Binding="{Binding Path=ResponsiblePerson, Mode=OneWay}" Header="项目负责人" IsReadOnly="True" Width="100" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=ManufactureNumber, Mode=OneWay}" Header="生产令号" IsReadOnly="True" Width="100" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=ProjectName, Mode=OneWay}" Header="项目名称" IsReadOnly="True" Width="250" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=ProjectNote, Mode=OneWay}" Header="项目备注" IsReadOnly="True" Width="250" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=RecoderDateTime, Mode=OneWay, StringFormat=yyyy/MM/dd}" Header="记录时间" IsReadOnly="True" Width="100"/>
+                        <sdk:DataGridTextColumn Binding="{Binding Path=OutputDateTime, Mode=OneWay, StringFormat=yyyy/MM/dd}" Header="发运完成时间" IsReadOnly="True" Width="100" />
+                    </sdk:DataGrid.Columns>
+                </sdk:DataGrid>
+            </Grid>
+        </toolkit:BusyIndicator>
+    </Grid>
+</navigation:Page>

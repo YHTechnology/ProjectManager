@@ -1,0 +1,1669 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="productmanageModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="productmanageModelStoreContainer">
+          <EntitySet Name="action" EntityType="productmanageModel.Store.action" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="department" EntityType="productmanageModel.Store.department" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="filetype" EntityType="productmanageModel.Store.filetype" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="important_part" EntityType="productmanageModel.Store.important_part" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="important_part_rejester" EntityType="productmanageModel.Store.important_part_rejester" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="plan" EntityType="productmanageModel.Store.plan" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="plan_extra" EntityType="productmanageModel.Store.plan_extra" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="plan_outline_files" EntityType="productmanageModel.Store.plan_outline_files" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="product" EntityType="productmanageModel.Store.product" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="product_part_time" EntityType="productmanageModel.Store.product_part_time" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="product_part_type" EntityType="productmanageModel.Store.product_part_type" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="product_type" EntityType="productmanageModel.Store.product_type" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="project" EntityType="productmanageModel.Store.project" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="project_files" EntityType="productmanageModel.Store.project_files" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="project_responsible" EntityType="productmanageModel.Store.project_responsible" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="projectconfig" EntityType="productmanageModel.Store.projectconfig" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="questiontrace" EntityType="productmanageModel.Store.questiontrace" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="role" EntityType="productmanageModel.Store.role" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="role_action" EntityType="productmanageModel.Store.role_action" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="user" EntityType="productmanageModel.Store.user" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="user_action" EntityType="productmanageModel.Store.user_action" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="user_project" EntityType="productmanageModel.Store.user_project" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="user_remind" EntityType="productmanageModel.Store.user_remind" store:Type="Tables" Schema="productmanage" />
+          <EntitySet Name="user_role" EntityType="productmanageModel.Store.user_role" store:Type="Tables" Schema="productmanage" />
+          <AssociationSet Name="actiontoroleaction" Association="productmanageModel.Store.actiontoroleaction">
+            <End Role="action" EntitySet="action" />
+            <End Role="role_action" EntitySet="role_action" />
+          </AssociationSet>
+          <AssociationSet Name="department_id_key" Association="productmanageModel.Store.department_id_key">
+            <End Role="department" EntitySet="department" />
+            <End Role="project_files" EntitySet="project_files" />
+          </AssociationSet>
+          <AssociationSet Name="departmentidkey" Association="productmanageModel.Store.departmentidkey">
+            <End Role="department" EntitySet="department" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="manufacture_number" Association="productmanageModel.Store.manufacture_number">
+            <End Role="project" EntitySet="project" />
+            <End Role="plan" EntitySet="plan" />
+          </AssociationSet>
+          <AssociationSet Name="manufacture_number_key" Association="productmanageModel.Store.manufacture_number_key">
+            <End Role="project" EntitySet="project" />
+            <End Role="project_responsible" EntitySet="project_responsible" />
+          </AssociationSet>
+          <AssociationSet Name="manufacture_number_keykey" Association="productmanageModel.Store.manufacture_number_keykey">
+            <End Role="project" EntitySet="project" />
+            <End Role="project_files" EntitySet="project_files" />
+          </AssociationSet>
+          <AssociationSet Name="manufacture_number_product" Association="productmanageModel.Store.manufacture_number_product">
+            <End Role="project" EntitySet="project" />
+            <End Role="product" EntitySet="product" />
+          </AssociationSet>
+          <AssociationSet Name="product_manufacture_number_key" Association="productmanageModel.Store.product_manufacture_number_key">
+            <End Role="project" EntitySet="project" />
+            <End Role="projectconfig" EntitySet="projectconfig" />
+          </AssociationSet>
+          <AssociationSet Name="roleidtouserrole" Association="productmanageModel.Store.roleidtouserrole">
+            <End Role="role" EntitySet="role" />
+            <End Role="user_role" EntitySet="user_role" />
+          </AssociationSet>
+          <AssociationSet Name="user_id_key" Association="productmanageModel.Store.user_id_key">
+            <End Role="user" EntitySet="user" />
+            <End Role="project_files" EntitySet="project_files" />
+          </AssociationSet>
+          <AssociationSet Name="useractiontoactionid" Association="productmanageModel.Store.useractiontoactionid">
+            <End Role="action" EntitySet="action" />
+            <End Role="user_action" EntitySet="user_action" />
+          </AssociationSet>
+          <AssociationSet Name="useractiontouserid" Association="productmanageModel.Store.useractiontouserid">
+            <End Role="user" EntitySet="user" />
+            <End Role="user_action" EntitySet="user_action" />
+          </AssociationSet>
+          <AssociationSet Name="useridtouserrole" Association="productmanageModel.Store.useridtouserrole">
+            <End Role="user" EntitySet="user" />
+            <End Role="user_role" EntitySet="user_role" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="action">
+          <Key>
+            <PropertyRef Name="action_id" />
+          </Key>
+          <Property Name="action_id" Type="int" Nullable="false" />
+          <Property Name="action_name" Type="varchar" MaxLength="45" />
+          <Property Name="action_code" Type="int" />
+          <Property Name="action_type" Type="int" />
+          <Property Name="supper_action_id" Type="int" />
+        </EntityType>
+        <EntityType Name="department">
+          <Key>
+            <PropertyRef Name="department_id" />
+          </Key>
+          <Property Name="department_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="department_name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="filetype">
+          <Key>
+            <PropertyRef Name="file_type_id" />
+          </Key>
+          <Property Name="file_type_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="file_type_name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="important_part">
+          <Key>
+            <PropertyRef Name="important_part_id" />
+          </Key>
+          <Property Name="important_part_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="manufacture_number" Type="varchar" MaxLength="30" />
+          <Property Name="important_part_name" Type="varchar" MaxLength="100" />
+          <Property Name="important_part_manufacturers" Type="varchar" MaxLength="100" />
+          <Property Name="arive_time" Type="datetime" />
+          <Property Name="arive_user_id" Type="int" />
+          <Property Name="arive_input_time" Type="datetime" />
+          <Property Name="modify_user_id" Type="int" />
+          <Property Name="modify_time" Type="datetime" />
+          <Property Name="note" Type="varchar" MaxLength="500" />
+          <Property Name="isDelete" Type="bit" />
+          <Property Name="delete_user_id" Type="int" />
+          <Property Name="delete_time" Type="datetime" />
+          <Property Name="delete_note" Type="varchar" MaxLength="400" />
+        </EntityType>
+        <EntityType Name="important_part_rejester">
+          <Key>
+            <PropertyRef Name="important_part_rejester_id" />
+          </Key>
+          <Property Name="important_part_rejester_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="manufacture_number" Type="varchar" MaxLength="30" />
+          <Property Name="important_part_name" Type="varchar" MaxLength="100" />
+          <Property Name="important_part_manufacturers" Type="varchar" MaxLength="100" />
+          <Property Name="important_part_type" Type="varchar" MaxLength="45" />
+          <Property Name="output_number" Type="varchar" MaxLength="45" />
+          <Property Name="output_time" Type="datetime" />
+          <Property Name="important_part_manu" Type="varchar" MaxLength="45" />
+          <Property Name="note" Type="varchar" MaxLength="500" />
+          <Property Name="isDelete" Type="bit" />
+          <Property Name="input_user_id" Type="int" />
+          <Property Name="input_datetime" Type="datetime" />
+          <Property Name="modify_user_id" Type="int" />
+          <Property Name="modify_datetime" Type="datetime" />
+          <Property Name="delete_user_id" Type="int" />
+          <Property Name="delete_datetime" Type="datetime" />
+          <Property Name="delete_reason" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="plan">
+          <Key>
+            <PropertyRef Name="plan_id" />
+          </Key>
+          <Property Name="plan_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="manufacture_number" Type="varchar" MaxLength="30" />
+          <Property Name="version_id" Type="varchar" MaxLength="30" />
+          <Property Name="sequence_id" Type="int" />
+          <Property Name="component_name" Type="varchar" MaxLength="45" />
+          <Property Name="task_description" Type="varchar" MaxLength="255" />
+          <Property Name="weight" Type="decimal" Precision="4" Scale="2" />
+          <Property Name="score" Type="decimal" Precision="4" Scale="2" />
+          <Property Name="target_date" Type="datetime" />
+          <Property Name="target_date_adjustment1" Type="datetime" />
+          <Property Name="target_date_adjustment2" Type="datetime" />
+          <Property Name="accomplish_date" Type="datetime" />
+          <Property Name="department_id" Type="int" />
+          <Property Name="remark" Type="varchar" MaxLength="255" />
+          <Property Name="sheet_name" Type="varchar" MaxLength="30" />
+          <Property Name="order_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="plan_extra">
+          <Key>
+            <PropertyRef Name="plan_extra_id" />
+          </Key>
+          <Property Name="plan_extra_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="manufacture_number" Type="varchar" MaxLength="30" />
+          <Property Name="version_id" Type="varchar" MaxLength="30" />
+          <Property Name="file_id" Type="varchar" MaxLength="30" />
+          <Property Name="requirement" Type="varchar" MaxLength="255" />
+          <Property Name="compilation_basis" Type="varchar" MaxLength="255" />
+          <Property Name="reason_adjustment1" Type="varchar" MaxLength="255" />
+          <Property Name="reason_adjustment2" Type="varchar" MaxLength="255" />
+          <Property Name="compile_user_name" Type="varchar" MaxLength="45" />
+          <Property Name="compile_date" Type="datetime" />
+          <Property Name="examine_user_name" Type="varchar" MaxLength="45" />
+          <Property Name="examine_date" Type="datetime" />
+          <Property Name="approve_user_name" Type="varchar" MaxLength="45" />
+          <Property Name="approve_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="plan_outline_files">
+          <Key>
+            <PropertyRef Name="file_id" />
+          </Key>
+          <Property Name="file_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="file_name" Type="varchar" MaxLength="200" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="file_bytes" Type="bigint" />
+          <Property Name="file_uploadtime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="product_name" Type="varchar" MaxLength="45" />
+          <Property Name="manufacture_number" Type="varchar" MaxLength="30" />
+          <Property Name="product_id_createdate" Type="datetime" />
+          <Property Name="product_type_id" Type="int" />
+          <Property Name="product_descript1" Type="varchar" MaxLength="400" />
+          <Property Name="product_descript2" Type="varchar" MaxLength="400" />
+          <Property Name="product_arive_time" Type="datetime" />
+          <Property Name="product_complete_time" Type="datetime" />
+          <Property Name="product_outputnumber" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="product_part_time">
+          <Key>
+            <PropertyRef Name="product_part_time_id" />
+          </Key>
+          <Property Name="product_part_time_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="varchar" MaxLength="30" />
+          <Property Name="product_part_id" Type="int" />
+          <Property Name="start_time" Type="datetime" />
+          <Property Name="finish_time" Type="datetime" />
+          <Property Name="descript1" Type="varchar" MaxLength="400" />
+          <Property Name="descript2" Type="varchar" MaxLength="400" />
+        </EntityType>
+        <EntityType Name="product_part_type">
+          <Key>
+            <PropertyRef Name="product_part_type_id" />
+          </Key>
+          <Property Name="product_part_type_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="product_part_type_name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="product_type">
+          <Key>
+            <PropertyRef Name="product_type_id" />
+          </Key>
+          <Property Name="product_type_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="product_type_name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="project">
+          <Key>
+            <PropertyRef Name="manufacture_number" />
+          </Key>
+          <Property Name="manufacture_number" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="project_name" Type="varchar" MaxLength="50" />
+          <Property Name="model_number" Type="varchar" MaxLength="30" />
+          <Property Name="remark" Type="varchar" />
+          <Property Name="year_number" Type="int" />
+          <Property Name="record_date" Type="datetime" />
+          <Property Name="plan_version_id" Type="varchar" MaxLength="30" />
+          <Property Name="remind_day" Type="int" />
+          <Property Name="accomplish_mark" Type="int" />
+          <Property Name="isdelete" Type="bit" />
+          <Property Name="deletedescript" Type="varchar" MaxLength="400" />
+          <Property Name="isFreeze" Type="bit" />
+          <Property Name="isFreezedescript" Type="varchar" MaxLength="400" />
+          <Property Name="delete_user_id" Type="int" />
+          <Property Name="add_user_id" Type="int" />
+          <Property Name="last_modify_user_id" Type="int" />
+          <Property Name="plan_update_date" Type="datetime" />
+          <Property Name="delivery_time" Type="datetime" />
+          <Property Name="contract_number" Type="varchar" MaxLength="45" />
+          <Property Name="invoice_completion_time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="project_files">
+          <Key>
+            <PropertyRef Name="project_files_id" />
+          </Key>
+          <Property Name="project_files_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="manufacture_number" Type="varchar" MaxLength="30" />
+          <Property Name="department_id" Type="int" />
+          <Property Name="file_name" Type="varchar" MaxLength="200" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="file_type" Type="varchar" MaxLength="45" />
+          <Property Name="file_discript" Type="varchar" MaxLength="200" />
+          <Property Name="file_updatetime" Type="datetime" />
+          <Property Name="file_delete" Type="bit" />
+          <Property Name="file_delete_descript" Type="varchar" MaxLength="400" />
+          <Property Name="file_delete_time" Type="datetime" />
+          <Property Name="file_delete_persion_id" Type="int" />
+          <Property Name="file_type_id" Type="int" />
+          <Property Name="file_bytes" Type="bigint" />
+          <Property Name="r_manufacture_number" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="project_responsible">
+          <Key>
+            <PropertyRef Name="project_responsible_id" />
+          </Key>
+          <Property Name="project_responsible_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="manufacture_number" Type="varchar" MaxLength="30" />
+          <Property Name="department_id" Type="int" />
+          <Property Name="responsible_persionName" Type="varchar" MaxLength="45" />
+          <Property Name="start_time" Type="datetime" />
+          <Property Name="finish_time" Type="datetime" />
+          <Property Name="isfinished" Type="bit" />
+          <Property Name="descript" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="projectconfig">
+          <Key>
+            <PropertyRef Name="projectconfig_id" />
+          </Key>
+          <Property Name="projectconfig_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="projectconfig_number" Type="varchar" MaxLength="30" />
+          <Property Name="manufacture_number" Type="varchar" MaxLength="30" />
+          <Property Name="projectconfig_name" Type="varchar" MaxLength="100" />
+          <Property Name="projectconfig_describe" Type="varchar" MaxLength="800" />
+          <Property Name="projectconfig_mainconfig" Type="varchar" MaxLength="400" />
+          <Property Name="projectconfig_techrequire" Type="varchar" MaxLength="800" />
+          <Property Name="projectconfig_count" Type="int" />
+          <Property Name="projectconfig_madein" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="questiontrace">
+          <Key>
+            <PropertyRef Name="questiontrace_id" />
+          </Key>
+          <Property Name="questiontrace_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="manufacture_number" Type="varchar" MaxLength="30" />
+          <Property Name="question_descript" Type="varchar" MaxLength="400" />
+          <Property Name="question_answer" Type="varchar" MaxLength="400" />
+          <Property Name="question_res_departmentid" Type="int" />
+          <Property Name="question_hand_departmentid" Type="int" />
+          <Property Name="question_trace_departmendid" Type="int" />
+          <Property Name="question_last_answer_userid" Type="int" />
+          <Property Name="question_starttime" Type="datetime" />
+          <Property Name="question_lastanswertime" Type="datetime" />
+          <Property Name="question_req_answertime" Type="datetime" />
+          <Property Name="question_isclose" Type="bit" />
+          <Property Name="question_user_id_main" Type="int" />
+          <Property Name="question_user_id_cp1" Type="int" />
+          <Property Name="question_user_id_cp2" Type="int" />
+          <Property Name="question_last_answer_user_id" Type="varchar" MaxLength="45" />
+          <Property Name="question_file" Type="varchar" MaxLength="100" />
+          <Property Name="question_owner_id" Type="int" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="int" Nullable="false" />
+          <Property Name="role_name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="role_action">
+          <Key>
+            <PropertyRef Name="role_action_id" />
+          </Key>
+          <Property Name="role_action_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="role_id" Type="int" />
+          <Property Name="action_id" Type="int" />
+          <Property Name="isPermit" Type="bit" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="user_name" Type="varchar" MaxLength="45" />
+          <Property Name="user_password" Type="varchar" MaxLength="45" />
+          <Property Name="user_cname" Type="varchar" MaxLength="45" />
+          <Property Name="user_department_id" Type="int" />
+          <Property Name="user_title" Type="varchar" MaxLength="45" />
+          <Property Name="user_is_freeze" Type="bit" />
+          <Property Name="isManager" Type="bit" />
+          <Property Name="user_phone_num" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="user_action">
+          <Key>
+            <PropertyRef Name="user_action_id" />
+          </Key>
+          <Property Name="user_action_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="action_id" Type="int" />
+          <Property Name="isPermit" Type="bit" />
+        </EntityType>
+        <EntityType Name="user_project">
+          <Key>
+            <PropertyRef Name="user_project_id" />
+          </Key>
+          <Property Name="user_project_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="manufacture_number" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="user_remind">
+          <Key>
+            <PropertyRef Name="user_remind_id" />
+          </Key>
+          <Property Name="user_remind_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="manufacture_number" Type="varchar" MaxLength="30" />
+          <Property Name="remind_one" Type="int" />
+          <Property Name="remind_two" Type="int" />
+          <Property Name="remind_three" Type="int" />
+        </EntityType>
+        <EntityType Name="user_role">
+          <Key>
+            <PropertyRef Name="user_role_id" />
+          </Key>
+          <Property Name="user_role_id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="role_id" Type="int" />
+          <Property Name="isPermit" Type="bit" />
+        </EntityType>
+        <Association Name="actiontoroleaction">
+          <End Role="action" Type="productmanageModel.Store.action" Multiplicity="0..1" />
+          <End Role="role_action" Type="productmanageModel.Store.role_action" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="action">
+              <PropertyRef Name="action_id" />
+            </Principal>
+            <Dependent Role="role_action">
+              <PropertyRef Name="action_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="department_id_key">
+          <End Role="department" Type="productmanageModel.Store.department" Multiplicity="0..1" />
+          <End Role="project_files" Type="productmanageModel.Store.project_files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department">
+              <PropertyRef Name="department_id" />
+            </Principal>
+            <Dependent Role="project_files">
+              <PropertyRef Name="department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="departmentidkey">
+          <End Role="department" Type="productmanageModel.Store.department" Multiplicity="0..1" />
+          <End Role="user" Type="productmanageModel.Store.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department">
+              <PropertyRef Name="department_id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="user_department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="manufacture_number">
+          <End Role="project" Type="productmanageModel.Store.project" Multiplicity="0..1" />
+          <End Role="plan" Type="productmanageModel.Store.plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="manufacture_number" />
+            </Principal>
+            <Dependent Role="plan">
+              <PropertyRef Name="manufacture_number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="manufacture_number_key">
+          <End Role="project" Type="productmanageModel.Store.project" Multiplicity="0..1" />
+          <End Role="project_responsible" Type="productmanageModel.Store.project_responsible" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="manufacture_number" />
+            </Principal>
+            <Dependent Role="project_responsible">
+              <PropertyRef Name="manufacture_number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="manufacture_number_keykey">
+          <End Role="project" Type="productmanageModel.Store.project" Multiplicity="0..1" />
+          <End Role="project_files" Type="productmanageModel.Store.project_files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="manufacture_number" />
+            </Principal>
+            <Dependent Role="project_files">
+              <PropertyRef Name="manufacture_number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="manufacture_number_product">
+          <End Role="project" Type="productmanageModel.Store.project" Multiplicity="0..1" />
+          <End Role="product" Type="productmanageModel.Store.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="manufacture_number" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="manufacture_number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="product_manufacture_number_key">
+          <End Role="project" Type="productmanageModel.Store.project" Multiplicity="0..1" />
+          <End Role="projectconfig" Type="productmanageModel.Store.projectconfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="manufacture_number" />
+            </Principal>
+            <Dependent Role="projectconfig">
+              <PropertyRef Name="manufacture_number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="roleidtouserrole">
+          <End Role="role" Type="productmanageModel.Store.role" Multiplicity="0..1" />
+          <End Role="user_role" Type="productmanageModel.Store.user_role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="user_role">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_id_key">
+          <End Role="user" Type="productmanageModel.Store.user" Multiplicity="0..1" />
+          <End Role="project_files" Type="productmanageModel.Store.project_files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="project_files">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="useractiontoactionid">
+          <End Role="action" Type="productmanageModel.Store.action" Multiplicity="0..1" />
+          <End Role="user_action" Type="productmanageModel.Store.user_action" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="action">
+              <PropertyRef Name="action_id" />
+            </Principal>
+            <Dependent Role="user_action">
+              <PropertyRef Name="action_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="useractiontouserid">
+          <End Role="user" Type="productmanageModel.Store.user" Multiplicity="0..1" />
+          <End Role="user_action" Type="productmanageModel.Store.user_action" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="user_action">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="useridtouserrole">
+          <End Role="user" Type="productmanageModel.Store.user" Multiplicity="0..1" />
+          <End Role="user_role" Type="productmanageModel.Store.user_role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="user_role">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="productmanageModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="productmanageEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="action" EntityType="productmanageModel.action" />
+          <EntitySet Name="department" EntityType="productmanageModel.department" />
+          <EntitySet Name="filetype" EntityType="productmanageModel.filetype" />
+          <EntitySet Name="important_part" EntityType="productmanageModel.important_part" />
+          <EntitySet Name="important_part_rejester" EntityType="productmanageModel.important_part_rejester" />
+          <EntitySet Name="plan" EntityType="productmanageModel.plan" />
+          <EntitySet Name="plan_extra" EntityType="productmanageModel.plan_extra" />
+          <EntitySet Name="plan_outline_files" EntityType="productmanageModel.plan_outline_files" />
+          <EntitySet Name="product" EntityType="productmanageModel.product" />
+          <EntitySet Name="product_part_time" EntityType="productmanageModel.product_part_time" />
+          <EntitySet Name="product_part_type" EntityType="productmanageModel.product_part_type" />
+          <EntitySet Name="product_type" EntityType="productmanageModel.product_type" />
+          <EntitySet Name="project" EntityType="productmanageModel.project" />
+          <EntitySet Name="project_files" EntityType="productmanageModel.project_files" />
+          <EntitySet Name="project_responsible" EntityType="productmanageModel.project_responsible" />
+          <EntitySet Name="projectconfig" EntityType="productmanageModel.projectconfig" />
+          <EntitySet Name="questiontrace" EntityType="productmanageModel.questiontrace" />
+          <EntitySet Name="role" EntityType="productmanageModel.role" />
+          <EntitySet Name="role_action" EntityType="productmanageModel.role_action" />
+          <EntitySet Name="user" EntityType="productmanageModel.user" />
+          <EntitySet Name="user_action" EntityType="productmanageModel.user_action" />
+          <EntitySet Name="user_project" EntityType="productmanageModel.user_project" />
+          <EntitySet Name="user_remind" EntityType="productmanageModel.user_remind" />
+          <EntitySet Name="user_role" EntityType="productmanageModel.user_role" />
+          <AssociationSet Name="actiontoroleaction" Association="productmanageModel.actiontoroleaction">
+            <End EntitySet="action" Role="action" />
+            <End EntitySet="role_action" Role="role_action" />
+          </AssociationSet>
+          <AssociationSet Name="useractiontoactionid" Association="productmanageModel.useractiontoactionid">
+            <End EntitySet="action" Role="action" />
+            <End EntitySet="user_action" Role="user_action" />
+          </AssociationSet>
+          <AssociationSet Name="department_id_key" Association="productmanageModel.department_id_key">
+            <End EntitySet="department" Role="department" />
+            <End EntitySet="project_files" Role="project_files" />
+          </AssociationSet>
+          <AssociationSet Name="departmentidkey" Association="productmanageModel.departmentidkey">
+            <End EntitySet="department" Role="department" />
+            <End EntitySet="user" Role="user" />
+          </AssociationSet>
+          <AssociationSet Name="manufacture_number" Association="productmanageModel.manufacture_number">
+            <End EntitySet="project" Role="project" />
+            <End EntitySet="plan" Role="plan" />
+          </AssociationSet>
+          <AssociationSet Name="manufacture_number_product" Association="productmanageModel.manufacture_number_product">
+            <End EntitySet="project" Role="project" />
+            <End EntitySet="product" Role="product" />
+          </AssociationSet>
+          <AssociationSet Name="manufacture_number_key" Association="productmanageModel.manufacture_number_key">
+            <End EntitySet="project" Role="project" />
+            <End EntitySet="project_responsible" Role="project_responsible" />
+          </AssociationSet>
+          <AssociationSet Name="manufacture_number_keykey" Association="productmanageModel.manufacture_number_keykey">
+            <End EntitySet="project" Role="project" />
+            <End EntitySet="project_files" Role="project_files" />
+          </AssociationSet>
+          <AssociationSet Name="product_manufacture_number_key" Association="productmanageModel.product_manufacture_number_key">
+            <End EntitySet="project" Role="project" />
+            <End EntitySet="projectconfig" Role="projectconfig" />
+          </AssociationSet>
+          <AssociationSet Name="user_id_key" Association="productmanageModel.user_id_key">
+            <End EntitySet="user" Role="user" />
+            <End EntitySet="project_files" Role="project_files" />
+          </AssociationSet>
+          <AssociationSet Name="roleidtouserrole" Association="productmanageModel.roleidtouserrole">
+            <End EntitySet="role" Role="role" />
+            <End EntitySet="user_role" Role="user_role" />
+          </AssociationSet>
+          <AssociationSet Name="useractiontouserid" Association="productmanageModel.useractiontouserid">
+            <End EntitySet="user" Role="user" />
+            <End EntitySet="user_action" Role="user_action" />
+          </AssociationSet>
+          <AssociationSet Name="useridtouserrole" Association="productmanageModel.useridtouserrole">
+            <End EntitySet="user" Role="user" />
+            <End EntitySet="user_role" Role="user_role" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="action">
+          <Key>
+            <PropertyRef Name="action_id" />
+          </Key>
+          <Property Name="action_id" Nullable="false" Type="Int32" />
+          <Property Name="action_name" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="action_code" Type="Int32" />
+          <Property Name="action_type" Type="Int32" />
+          <Property Name="supper_action_id" Type="Int32" />
+          <NavigationProperty Name="role_action" Relationship="productmanageModel.actiontoroleaction" FromRole="action" ToRole="role_action" />
+          <NavigationProperty Name="user_action" Relationship="productmanageModel.useractiontoactionid" FromRole="action" ToRole="user_action" />
+        </EntityType>
+        <EntityType Name="department">
+          <Key>
+            <PropertyRef Name="department_id" />
+          </Key>
+          <Property Name="department_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="department_name" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <NavigationProperty Name="project_files" Relationship="productmanageModel.department_id_key" FromRole="department" ToRole="project_files" />
+          <NavigationProperty Name="user" Relationship="productmanageModel.departmentidkey" FromRole="department" ToRole="user" />
+        </EntityType>
+        <EntityType Name="filetype">
+          <Key>
+            <PropertyRef Name="file_type_id" />
+          </Key>
+          <Property Name="file_type_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="file_type_name" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+        </EntityType>
+        <EntityType Name="important_part">
+          <Key>
+            <PropertyRef Name="important_part_id" />
+          </Key>
+          <Property Name="important_part_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="manufacture_number" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="important_part_name" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="important_part_manufacturers" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="arive_time" Type="DateTime" />
+          <Property Name="arive_user_id" Type="Int32" />
+          <Property Name="arive_input_time" Type="DateTime" />
+          <Property Name="modify_user_id" Type="Int32" />
+          <Property Name="modify_time" Type="DateTime" />
+          <Property Name="note" MaxLength="500" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="isDelete" Type="Boolean" />
+          <Property Name="delete_user_id" Type="Int32" />
+          <Property Name="delete_time" Type="DateTime" />
+          <Property Name="delete_note" MaxLength="400" FixedLength="false" Unicode="false" Type="String" />
+        </EntityType>
+        <EntityType Name="important_part_rejester">
+          <Key>
+            <PropertyRef Name="important_part_rejester_id" />
+          </Key>
+          <Property Name="important_part_rejester_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="manufacture_number" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="important_part_name" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="important_part_manufacturers" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="important_part_type" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="output_number" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="output_time" Type="DateTime" />
+          <Property Name="important_part_manu" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="note" MaxLength="500" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="isDelete" Type="Boolean" />
+          <Property Name="input_user_id" Type="Int32" />
+          <Property Name="input_datetime" Type="DateTime" />
+          <Property Name="modify_user_id" Type="Int32" />
+          <Property Name="modify_datetime" Type="DateTime" />
+          <Property Name="delete_user_id" Type="Int32" />
+          <Property Name="delete_datetime" Type="DateTime" />
+          <Property Name="delete_reason" MaxLength="500" FixedLength="false" Unicode="false" Type="String" />
+        </EntityType>
+        <EntityType Name="plan">
+          <Key>
+            <PropertyRef Name="plan_id" />
+          </Key>
+          <Property Name="plan_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="manufacture_number" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="version_id" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="sequence_id" Type="Int32" />
+          <Property Name="component_name" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="task_description" MaxLength="255" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="weight" Type="Decimal" />
+          <Property Name="score" Type="Decimal" />
+          <Property Name="target_date" Type="DateTime" />
+          <Property Name="target_date_adjustment1" Type="DateTime" />
+          <Property Name="target_date_adjustment2" Type="DateTime" />
+          <Property Name="accomplish_date" Type="DateTime" />
+          <Property Name="department_id" Type="Int32" />
+          <Property Name="remark" MaxLength="255" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="sheet_name" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="order_date" Type="DateTime" />
+          <NavigationProperty Name="project" Relationship="productmanageModel.manufacture_number" FromRole="plan" ToRole="project" />
+        </EntityType>
+        <EntityType Name="plan_extra">
+          <Key>
+            <PropertyRef Name="plan_extra_id" />
+          </Key>
+          <Property Name="plan_extra_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="manufacture_number" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="version_id" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="file_id" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="requirement" MaxLength="255" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="compilation_basis" MaxLength="255" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="reason_adjustment1" MaxLength="255" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="reason_adjustment2" MaxLength="255" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="compile_user_name" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="compile_date" Type="DateTime" />
+          <Property Name="examine_user_name" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="examine_date" Type="DateTime" />
+          <Property Name="approve_user_name" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="approve_date" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="plan_outline_files">
+          <Key>
+            <PropertyRef Name="file_id" />
+          </Key>
+          <Property Name="file_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="file_name" MaxLength="200" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="file_bytes" Type="Int64" />
+          <Property Name="file_uploadtime" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="product_name" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="manufacture_number" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="product_id_createdate" Type="DateTime" />
+          <Property Name="product_type_id" Type="Int32" />
+          <Property Name="product_descript1" MaxLength="400" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="product_descript2" MaxLength="400" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="product_arive_time" Type="DateTime" />
+          <Property Name="product_complete_time" Type="DateTime" />
+          <Property Name="product_outputnumber" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <NavigationProperty Name="project" Relationship="productmanageModel.manufacture_number_product" FromRole="product" ToRole="project" />
+        </EntityType>
+        <EntityType Name="product_part_time">
+          <Key>
+            <PropertyRef Name="product_part_time_id" />
+          </Key>
+          <Property Name="product_part_time_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="product_id" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="product_part_id" Type="Int32" />
+          <Property Name="start_time" Type="DateTime" />
+          <Property Name="finish_time" Type="DateTime" />
+          <Property Name="descript1" MaxLength="400" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="descript2" MaxLength="400" FixedLength="false" Unicode="false" Type="String" />
+        </EntityType>
+        <EntityType Name="product_part_type">
+          <Key>
+            <PropertyRef Name="product_part_type_id" />
+          </Key>
+          <Property Name="product_part_type_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="product_part_type_name" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+        </EntityType>
+        <EntityType Name="product_type">
+          <Key>
+            <PropertyRef Name="product_type_id" />
+          </Key>
+          <Property Name="product_type_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="product_type_name" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+        </EntityType>
+        <EntityType Name="project">
+          <Key>
+            <PropertyRef Name="manufacture_number" />
+          </Key>
+          <Property Name="manufacture_number" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="project_name" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="model_number" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="remark" MaxLength="1000" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="year_number" Type="Int32" />
+          <Property Name="record_date" Type="DateTime" />
+          <Property Name="plan_version_id" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="remind_day" Type="Int32" />
+          <Property Name="accomplish_mark" Type="Int32" />
+          <Property Name="isdelete" Type="Boolean" />
+          <Property Name="deletedescript" MaxLength="400" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="isFreeze" Type="Boolean" />
+          <Property Name="isFreezedescript" MaxLength="400" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="delete_user_id" Type="Int32" />
+          <Property Name="add_user_id" Type="Int32" />
+          <Property Name="last_modify_user_id" Type="Int32" />
+          <Property Name="plan_update_date" Type="DateTime" />
+          <NavigationProperty Name="plan" Relationship="productmanageModel.manufacture_number" FromRole="project" ToRole="plan" />
+          <NavigationProperty Name="product" Relationship="productmanageModel.manufacture_number_product" FromRole="project" ToRole="product" />
+          <NavigationProperty Name="project_responsible" Relationship="productmanageModel.manufacture_number_key" FromRole="project" ToRole="project_responsible" />
+          <NavigationProperty Name="project_files" Relationship="productmanageModel.manufacture_number_keykey" FromRole="project" ToRole="project_files" />
+          <NavigationProperty Name="projectconfig" Relationship="productmanageModel.product_manufacture_number_key" FromRole="project" ToRole="projectconfig" />
+          <Property Name="delivery_time" Type="DateTime" />
+          <Property Name="contract_number" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="invoice_completion_time" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="project_files">
+          <Key>
+            <PropertyRef Name="project_files_id" />
+          </Key>
+          <Property Name="project_files_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="manufacture_number" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="department_id" Type="Int32" />
+          <Property Name="file_name" MaxLength="200" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="file_type" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="file_discript" MaxLength="200" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="file_updatetime" Type="DateTime" />
+          <Property Name="file_delete" Type="Boolean" />
+          <Property Name="file_delete_descript" MaxLength="400" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="file_delete_time" Type="DateTime" />
+          <Property Name="file_delete_persion_id" Type="Int32" />
+          <Property Name="file_type_id" Type="Int32" />
+          <Property Name="file_bytes" Type="Int64" />
+          <NavigationProperty Name="department" Relationship="productmanageModel.department_id_key" FromRole="project_files" ToRole="department" />
+          <NavigationProperty Name="project" Relationship="productmanageModel.manufacture_number_keykey" FromRole="project_files" ToRole="project" />
+          <NavigationProperty Name="user" Relationship="productmanageModel.user_id_key" FromRole="project_files" ToRole="user" />
+          <Property Type="String" Name="r_manufacture_number" />
+        </EntityType>
+        <EntityType Name="project_responsible">
+          <Key>
+            <PropertyRef Name="project_responsible_id" />
+          </Key>
+          <Property Name="project_responsible_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="manufacture_number" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="department_id" Type="Int32" />
+          <Property Name="responsible_persionName" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="start_time" Type="DateTime" />
+          <Property Name="finish_time" Type="DateTime" />
+          <Property Name="isfinished" Type="Boolean" />
+          <Property Name="descript" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <NavigationProperty Name="project" Relationship="productmanageModel.manufacture_number_key" FromRole="project_responsible" ToRole="project" />
+        </EntityType>
+        <EntityType Name="projectconfig">
+          <Key>
+            <PropertyRef Name="projectconfig_id" />
+          </Key>
+          <Property Name="projectconfig_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="projectconfig_number" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="manufacture_number" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="projectconfig_name" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="projectconfig_describe" MaxLength="800" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="projectconfig_mainconfig" MaxLength="400" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="projectconfig_techrequire" MaxLength="800" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="projectconfig_count" Type="Int32" />
+          <Property Name="projectconfig_madein" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <NavigationProperty Name="project" Relationship="productmanageModel.product_manufacture_number_key" FromRole="projectconfig" ToRole="project" />
+        </EntityType>
+        <EntityType Name="questiontrace">
+          <Key>
+            <PropertyRef Name="questiontrace_id" />
+          </Key>
+          <Property Name="questiontrace_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="manufacture_number" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="question_descript" MaxLength="400" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="question_answer" MaxLength="400" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="question_res_departmentid" Type="Int32" />
+          <Property Name="question_hand_departmentid" Type="Int32" />
+          <Property Name="question_trace_departmendid" Type="Int32" />
+          <Property Name="question_last_answer_userid" Type="Int32" />
+          <Property Name="question_starttime" Type="DateTime" />
+          <Property Name="question_lastanswertime" Type="DateTime" />
+          <Property Name="question_req_answertime" Type="DateTime" />
+          <Property Name="question_isclose" Type="Boolean" />
+          <Property Name="question_user_id_main" Type="Int32" />
+          <Property Name="question_user_id_cp1" Type="Int32" />
+          <Property Name="question_user_id_cp2" Type="Int32" />
+          <Property Name="question_last_answer_user_id" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="question_file" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="question_owner_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Nullable="false" Type="Int32" />
+          <Property Name="role_name" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <NavigationProperty Name="user_role" Relationship="productmanageModel.roleidtouserrole" FromRole="role" ToRole="user_role" />
+        </EntityType>
+        <EntityType Name="role_action">
+          <Key>
+            <PropertyRef Name="role_action_id" />
+          </Key>
+          <Property Name="role_action_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="role_id" Type="Int32" />
+          <Property Name="action_id" Type="Int32" />
+          <Property Name="isPermit" Type="Boolean" />
+          <NavigationProperty Name="action" Relationship="productmanageModel.actiontoroleaction" FromRole="role_action" ToRole="action" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="user_name" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="user_password" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="user_cname" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="user_department_id" Type="Int32" />
+          <Property Name="user_title" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="user_is_freeze" Type="Boolean" />
+          <Property Name="isManager" Type="Boolean" />
+          <Property Name="user_phone_num" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+          <NavigationProperty Name="department" Relationship="productmanageModel.departmentidkey" FromRole="user" ToRole="department" />
+          <NavigationProperty Name="project_files" Relationship="productmanageModel.user_id_key" FromRole="user" ToRole="project_files" />
+          <NavigationProperty Name="user_action" Relationship="productmanageModel.useractiontouserid" FromRole="user" ToRole="user_action" />
+          <NavigationProperty Name="user_role" Relationship="productmanageModel.useridtouserrole" FromRole="user" ToRole="user_role" />
+        </EntityType>
+        <EntityType Name="user_action">
+          <Key>
+            <PropertyRef Name="user_action_id" />
+          </Key>
+          <Property Name="user_action_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="action_id" Type="Int32" />
+          <Property Name="isPermit" Type="Boolean" />
+          <NavigationProperty Name="action" Relationship="productmanageModel.useractiontoactionid" FromRole="user_action" ToRole="action" />
+          <NavigationProperty Name="user" Relationship="productmanageModel.useractiontouserid" FromRole="user_action" ToRole="user" />
+        </EntityType>
+        <EntityType Name="user_project">
+          <Key>
+            <PropertyRef Name="user_project_id" />
+          </Key>
+          <Property Name="user_project_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="manufacture_number" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+        </EntityType>
+        <EntityType Name="user_remind">
+          <Key>
+            <PropertyRef Name="user_remind_id" />
+          </Key>
+          <Property Name="user_remind_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="manufacture_number" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="remind_one" Type="Int32" />
+          <Property Name="remind_two" Type="Int32" />
+          <Property Name="remind_three" Type="Int32" />
+        </EntityType>
+        <EntityType Name="user_role">
+          <Key>
+            <PropertyRef Name="user_role_id" />
+          </Key>
+          <Property Name="user_role_id" Nullable="false" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="role_id" Type="Int32" />
+          <Property Name="isPermit" Type="Boolean" />
+          <NavigationProperty Name="role" Relationship="productmanageModel.roleidtouserrole" FromRole="user_role" ToRole="role" />
+          <NavigationProperty Name="user" Relationship="productmanageModel.useridtouserrole" FromRole="user_role" ToRole="user" />
+        </EntityType>
+        <Association Name="actiontoroleaction">
+          <End Type="productmanageModel.action" Multiplicity="0..1" Role="action" />
+          <End Type="productmanageModel.role_action" Multiplicity="*" Role="role_action" />
+          <ReferentialConstraint>
+            <Principal Role="action">
+              <PropertyRef Name="action_id" />
+            </Principal>
+            <Dependent Role="role_action">
+              <PropertyRef Name="action_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="useractiontoactionid">
+          <End Type="productmanageModel.action" Multiplicity="0..1" Role="action" />
+          <End Type="productmanageModel.user_action" Multiplicity="*" Role="user_action" />
+          <ReferentialConstraint>
+            <Principal Role="action">
+              <PropertyRef Name="action_id" />
+            </Principal>
+            <Dependent Role="user_action">
+              <PropertyRef Name="action_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="department_id_key">
+          <End Type="productmanageModel.department" Multiplicity="0..1" Role="department" />
+          <End Type="productmanageModel.project_files" Multiplicity="*" Role="project_files" />
+          <ReferentialConstraint>
+            <Principal Role="department">
+              <PropertyRef Name="department_id" />
+            </Principal>
+            <Dependent Role="project_files">
+              <PropertyRef Name="department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="departmentidkey">
+          <End Type="productmanageModel.department" Multiplicity="0..1" Role="department" />
+          <End Type="productmanageModel.user" Multiplicity="*" Role="user" />
+          <ReferentialConstraint>
+            <Principal Role="department">
+              <PropertyRef Name="department_id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="user_department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="manufacture_number">
+          <End Type="productmanageModel.project" Multiplicity="0..1" Role="project" />
+          <End Type="productmanageModel.plan" Multiplicity="*" Role="plan" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="manufacture_number" />
+            </Principal>
+            <Dependent Role="plan">
+              <PropertyRef Name="manufacture_number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="manufacture_number_product">
+          <End Type="productmanageModel.project" Multiplicity="0..1" Role="project" />
+          <End Type="productmanageModel.product" Multiplicity="*" Role="product" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="manufacture_number" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="manufacture_number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="manufacture_number_key">
+          <End Type="productmanageModel.project" Multiplicity="0..1" Role="project" />
+          <End Type="productmanageModel.project_responsible" Multiplicity="*" Role="project_responsible" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="manufacture_number" />
+            </Principal>
+            <Dependent Role="project_responsible">
+              <PropertyRef Name="manufacture_number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="manufacture_number_keykey">
+          <End Type="productmanageModel.project" Multiplicity="0..1" Role="project" />
+          <End Type="productmanageModel.project_files" Multiplicity="*" Role="project_files" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="manufacture_number" />
+            </Principal>
+            <Dependent Role="project_files">
+              <PropertyRef Name="manufacture_number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="product_manufacture_number_key">
+          <End Type="productmanageModel.project" Multiplicity="0..1" Role="project" />
+          <End Type="productmanageModel.projectconfig" Multiplicity="*" Role="projectconfig" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="manufacture_number" />
+            </Principal>
+            <Dependent Role="projectconfig">
+              <PropertyRef Name="manufacture_number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_id_key">
+          <End Type="productmanageModel.user" Multiplicity="0..1" Role="user" />
+          <End Type="productmanageModel.project_files" Multiplicity="*" Role="project_files" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="project_files">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="roleidtouserrole">
+          <End Type="productmanageModel.role" Multiplicity="0..1" Role="role" />
+          <End Type="productmanageModel.user_role" Multiplicity="*" Role="user_role" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="user_role">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="useractiontouserid">
+          <End Type="productmanageModel.user" Multiplicity="0..1" Role="user" />
+          <End Type="productmanageModel.user_action" Multiplicity="*" Role="user_action" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="user_action">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="useridtouserrole">
+          <End Type="productmanageModel.user" Multiplicity="0..1" Role="user" />
+          <End Type="productmanageModel.user_role" Multiplicity="*" Role="user_role" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="user_role">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="productmanageModelStoreContainer" CdmEntityContainer="productmanageEntities">
+          <EntitySetMapping Name="action">
+            <EntityTypeMapping TypeName="productmanageModel.action">
+              <MappingFragment StoreEntitySet="action">
+                <ScalarProperty Name="supper_action_id" ColumnName="supper_action_id" />
+                <ScalarProperty Name="action_type" ColumnName="action_type" />
+                <ScalarProperty Name="action_code" ColumnName="action_code" />
+                <ScalarProperty Name="action_name" ColumnName="action_name" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="department">
+            <EntityTypeMapping TypeName="productmanageModel.department">
+              <MappingFragment StoreEntitySet="department">
+                <ScalarProperty Name="department_name" ColumnName="department_name" />
+                <ScalarProperty Name="department_id" ColumnName="department_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="filetype">
+            <EntityTypeMapping TypeName="productmanageModel.filetype">
+              <MappingFragment StoreEntitySet="filetype">
+                <ScalarProperty Name="file_type_name" ColumnName="file_type_name" />
+                <ScalarProperty Name="file_type_id" ColumnName="file_type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="important_part">
+            <EntityTypeMapping TypeName="productmanageModel.important_part">
+              <MappingFragment StoreEntitySet="important_part">
+                <ScalarProperty Name="delete_note" ColumnName="delete_note" />
+                <ScalarProperty Name="delete_time" ColumnName="delete_time" />
+                <ScalarProperty Name="delete_user_id" ColumnName="delete_user_id" />
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="modify_time" ColumnName="modify_time" />
+                <ScalarProperty Name="modify_user_id" ColumnName="modify_user_id" />
+                <ScalarProperty Name="arive_input_time" ColumnName="arive_input_time" />
+                <ScalarProperty Name="arive_user_id" ColumnName="arive_user_id" />
+                <ScalarProperty Name="arive_time" ColumnName="arive_time" />
+                <ScalarProperty Name="important_part_manufacturers" ColumnName="important_part_manufacturers" />
+                <ScalarProperty Name="important_part_name" ColumnName="important_part_name" />
+                <ScalarProperty Name="manufacture_number" ColumnName="manufacture_number" />
+                <ScalarProperty Name="important_part_id" ColumnName="important_part_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="important_part_rejester">
+            <EntityTypeMapping TypeName="productmanageModel.important_part_rejester">
+              <MappingFragment StoreEntitySet="important_part_rejester">
+                <ScalarProperty Name="delete_reason" ColumnName="delete_reason" />
+                <ScalarProperty Name="delete_datetime" ColumnName="delete_datetime" />
+                <ScalarProperty Name="delete_user_id" ColumnName="delete_user_id" />
+                <ScalarProperty Name="modify_datetime" ColumnName="modify_datetime" />
+                <ScalarProperty Name="modify_user_id" ColumnName="modify_user_id" />
+                <ScalarProperty Name="input_datetime" ColumnName="input_datetime" />
+                <ScalarProperty Name="input_user_id" ColumnName="input_user_id" />
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="important_part_manu" ColumnName="important_part_manu" />
+                <ScalarProperty Name="output_time" ColumnName="output_time" />
+                <ScalarProperty Name="output_number" ColumnName="output_number" />
+                <ScalarProperty Name="important_part_type" ColumnName="important_part_type" />
+                <ScalarProperty Name="important_part_manufacturers" ColumnName="important_part_manufacturers" />
+                <ScalarProperty Name="important_part_name" ColumnName="important_part_name" />
+                <ScalarProperty Name="manufacture_number" ColumnName="manufacture_number" />
+                <ScalarProperty Name="important_part_rejester_id" ColumnName="important_part_rejester_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="plan">
+            <EntityTypeMapping TypeName="productmanageModel.plan">
+              <MappingFragment StoreEntitySet="plan">
+                <ScalarProperty Name="order_date" ColumnName="order_date" />
+                <ScalarProperty Name="sheet_name" ColumnName="sheet_name" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="department_id" ColumnName="department_id" />
+                <ScalarProperty Name="accomplish_date" ColumnName="accomplish_date" />
+                <ScalarProperty Name="target_date_adjustment2" ColumnName="target_date_adjustment2" />
+                <ScalarProperty Name="target_date_adjustment1" ColumnName="target_date_adjustment1" />
+                <ScalarProperty Name="target_date" ColumnName="target_date" />
+                <ScalarProperty Name="score" ColumnName="score" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="task_description" ColumnName="task_description" />
+                <ScalarProperty Name="component_name" ColumnName="component_name" />
+                <ScalarProperty Name="sequence_id" ColumnName="sequence_id" />
+                <ScalarProperty Name="version_id" ColumnName="version_id" />
+                <ScalarProperty Name="manufacture_number" ColumnName="manufacture_number" />
+                <ScalarProperty Name="plan_id" ColumnName="plan_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="plan_extra">
+            <EntityTypeMapping TypeName="productmanageModel.plan_extra">
+              <MappingFragment StoreEntitySet="plan_extra">
+                <ScalarProperty Name="approve_date" ColumnName="approve_date" />
+                <ScalarProperty Name="approve_user_name" ColumnName="approve_user_name" />
+                <ScalarProperty Name="examine_date" ColumnName="examine_date" />
+                <ScalarProperty Name="examine_user_name" ColumnName="examine_user_name" />
+                <ScalarProperty Name="compile_date" ColumnName="compile_date" />
+                <ScalarProperty Name="compile_user_name" ColumnName="compile_user_name" />
+                <ScalarProperty Name="reason_adjustment2" ColumnName="reason_adjustment2" />
+                <ScalarProperty Name="reason_adjustment1" ColumnName="reason_adjustment1" />
+                <ScalarProperty Name="compilation_basis" ColumnName="compilation_basis" />
+                <ScalarProperty Name="requirement" ColumnName="requirement" />
+                <ScalarProperty Name="file_id" ColumnName="file_id" />
+                <ScalarProperty Name="version_id" ColumnName="version_id" />
+                <ScalarProperty Name="manufacture_number" ColumnName="manufacture_number" />
+                <ScalarProperty Name="plan_extra_id" ColumnName="plan_extra_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="plan_outline_files">
+            <EntityTypeMapping TypeName="productmanageModel.plan_outline_files">
+              <MappingFragment StoreEntitySet="plan_outline_files">
+                <ScalarProperty Name="file_uploadtime" ColumnName="file_uploadtime" />
+                <ScalarProperty Name="file_bytes" ColumnName="file_bytes" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="file_id" ColumnName="file_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product">
+            <EntityTypeMapping TypeName="productmanageModel.product">
+              <MappingFragment StoreEntitySet="product">
+                <ScalarProperty Name="product_outputnumber" ColumnName="product_outputnumber" />
+                <ScalarProperty Name="product_complete_time" ColumnName="product_complete_time" />
+                <ScalarProperty Name="product_arive_time" ColumnName="product_arive_time" />
+                <ScalarProperty Name="product_descript2" ColumnName="product_descript2" />
+                <ScalarProperty Name="product_descript1" ColumnName="product_descript1" />
+                <ScalarProperty Name="product_type_id" ColumnName="product_type_id" />
+                <ScalarProperty Name="product_id_createdate" ColumnName="product_id_createdate" />
+                <ScalarProperty Name="manufacture_number" ColumnName="manufacture_number" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_part_time">
+            <EntityTypeMapping TypeName="productmanageModel.product_part_time">
+              <MappingFragment StoreEntitySet="product_part_time">
+                <ScalarProperty Name="descript2" ColumnName="descript2" />
+                <ScalarProperty Name="descript1" ColumnName="descript1" />
+                <ScalarProperty Name="finish_time" ColumnName="finish_time" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="product_part_id" ColumnName="product_part_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_part_time_id" ColumnName="product_part_time_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_part_type">
+            <EntityTypeMapping TypeName="productmanageModel.product_part_type">
+              <MappingFragment StoreEntitySet="product_part_type">
+                <ScalarProperty Name="product_part_type_name" ColumnName="product_part_type_name" />
+                <ScalarProperty Name="product_part_type_id" ColumnName="product_part_type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_type">
+            <EntityTypeMapping TypeName="productmanageModel.product_type">
+              <MappingFragment StoreEntitySet="product_type">
+                <ScalarProperty Name="product_type_name" ColumnName="product_type_name" />
+                <ScalarProperty Name="product_type_id" ColumnName="product_type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project">
+            <EntityTypeMapping TypeName="productmanageModel.project">
+              <MappingFragment StoreEntitySet="project">
+                <ScalarProperty Name="invoice_completion_time" ColumnName="invoice_completion_time" />
+                <ScalarProperty Name="contract_number" ColumnName="contract_number" />
+                <ScalarProperty Name="delivery_time" ColumnName="delivery_time" />
+                <ScalarProperty Name="plan_update_date" ColumnName="plan_update_date" />
+                <ScalarProperty Name="last_modify_user_id" ColumnName="last_modify_user_id" />
+                <ScalarProperty Name="add_user_id" ColumnName="add_user_id" />
+                <ScalarProperty Name="delete_user_id" ColumnName="delete_user_id" />
+                <ScalarProperty Name="isFreezedescript" ColumnName="isFreezedescript" />
+                <ScalarProperty Name="isFreeze" ColumnName="isFreeze" />
+                <ScalarProperty Name="deletedescript" ColumnName="deletedescript" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="accomplish_mark" ColumnName="accomplish_mark" />
+                <ScalarProperty Name="remind_day" ColumnName="remind_day" />
+                <ScalarProperty Name="plan_version_id" ColumnName="plan_version_id" />
+                <ScalarProperty Name="record_date" ColumnName="record_date" />
+                <ScalarProperty Name="year_number" ColumnName="year_number" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="model_number" ColumnName="model_number" />
+                <ScalarProperty Name="project_name" ColumnName="project_name" />
+                <ScalarProperty Name="manufacture_number" ColumnName="manufacture_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_files">
+            <EntityTypeMapping TypeName="productmanageModel.project_files">
+              <MappingFragment StoreEntitySet="project_files">
+                <ScalarProperty Name="r_manufacture_number" ColumnName="r_manufacture_number" />
+                <ScalarProperty Name="file_bytes" ColumnName="file_bytes" />
+                <ScalarProperty Name="file_type_id" ColumnName="file_type_id" />
+                <ScalarProperty Name="file_delete_persion_id" ColumnName="file_delete_persion_id" />
+                <ScalarProperty Name="file_delete_time" ColumnName="file_delete_time" />
+                <ScalarProperty Name="file_delete_descript" ColumnName="file_delete_descript" />
+                <ScalarProperty Name="file_delete" ColumnName="file_delete" />
+                <ScalarProperty Name="file_updatetime" ColumnName="file_updatetime" />
+                <ScalarProperty Name="file_discript" ColumnName="file_discript" />
+                <ScalarProperty Name="file_type" ColumnName="file_type" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="department_id" ColumnName="department_id" />
+                <ScalarProperty Name="manufacture_number" ColumnName="manufacture_number" />
+                <ScalarProperty Name="project_files_id" ColumnName="project_files_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_responsible">
+            <EntityTypeMapping TypeName="productmanageModel.project_responsible">
+              <MappingFragment StoreEntitySet="project_responsible">
+                <ScalarProperty Name="descript" ColumnName="descript" />
+                <ScalarProperty Name="isfinished" ColumnName="isfinished" />
+                <ScalarProperty Name="finish_time" ColumnName="finish_time" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="responsible_persionName" ColumnName="responsible_persionName" />
+                <ScalarProperty Name="department_id" ColumnName="department_id" />
+                <ScalarProperty Name="manufacture_number" ColumnName="manufacture_number" />
+                <ScalarProperty Name="project_responsible_id" ColumnName="project_responsible_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="projectconfig">
+            <EntityTypeMapping TypeName="productmanageModel.projectconfig">
+              <MappingFragment StoreEntitySet="projectconfig">
+                <ScalarProperty Name="projectconfig_madein" ColumnName="projectconfig_madein" />
+                <ScalarProperty Name="projectconfig_count" ColumnName="projectconfig_count" />
+                <ScalarProperty Name="projectconfig_techrequire" ColumnName="projectconfig_techrequire" />
+                <ScalarProperty Name="projectconfig_mainconfig" ColumnName="projectconfig_mainconfig" />
+                <ScalarProperty Name="projectconfig_describe" ColumnName="projectconfig_describe" />
+                <ScalarProperty Name="projectconfig_name" ColumnName="projectconfig_name" />
+                <ScalarProperty Name="manufacture_number" ColumnName="manufacture_number" />
+                <ScalarProperty Name="projectconfig_number" ColumnName="projectconfig_number" />
+                <ScalarProperty Name="projectconfig_id" ColumnName="projectconfig_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="questiontrace">
+            <EntityTypeMapping TypeName="productmanageModel.questiontrace">
+              <MappingFragment StoreEntitySet="questiontrace">
+                <ScalarProperty Name="question_owner_id" ColumnName="question_owner_id" />
+                <ScalarProperty Name="question_file" ColumnName="question_file" />
+                <ScalarProperty Name="question_last_answer_user_id" ColumnName="question_last_answer_user_id" />
+                <ScalarProperty Name="question_user_id_cp2" ColumnName="question_user_id_cp2" />
+                <ScalarProperty Name="question_user_id_cp1" ColumnName="question_user_id_cp1" />
+                <ScalarProperty Name="question_user_id_main" ColumnName="question_user_id_main" />
+                <ScalarProperty Name="question_isclose" ColumnName="question_isclose" />
+                <ScalarProperty Name="question_req_answertime" ColumnName="question_req_answertime" />
+                <ScalarProperty Name="question_lastanswertime" ColumnName="question_lastanswertime" />
+                <ScalarProperty Name="question_starttime" ColumnName="question_starttime" />
+                <ScalarProperty Name="question_last_answer_userid" ColumnName="question_last_answer_userid" />
+                <ScalarProperty Name="question_trace_departmendid" ColumnName="question_trace_departmendid" />
+                <ScalarProperty Name="question_hand_departmentid" ColumnName="question_hand_departmentid" />
+                <ScalarProperty Name="question_res_departmentid" ColumnName="question_res_departmentid" />
+                <ScalarProperty Name="question_answer" ColumnName="question_answer" />
+                <ScalarProperty Name="question_descript" ColumnName="question_descript" />
+                <ScalarProperty Name="manufacture_number" ColumnName="manufacture_number" />
+                <ScalarProperty Name="questiontrace_id" ColumnName="questiontrace_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="role">
+            <EntityTypeMapping TypeName="productmanageModel.role">
+              <MappingFragment StoreEntitySet="role">
+                <ScalarProperty Name="role_name" ColumnName="role_name" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="role_action">
+            <EntityTypeMapping TypeName="productmanageModel.role_action">
+              <MappingFragment StoreEntitySet="role_action">
+                <ScalarProperty Name="isPermit" ColumnName="isPermit" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="role_action_id" ColumnName="role_action_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="productmanageModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="user_phone_num" ColumnName="user_phone_num" />
+                <ScalarProperty Name="isManager" ColumnName="isManager" />
+                <ScalarProperty Name="user_is_freeze" ColumnName="user_is_freeze" />
+                <ScalarProperty Name="user_title" ColumnName="user_title" />
+                <ScalarProperty Name="user_department_id" ColumnName="user_department_id" />
+                <ScalarProperty Name="user_cname" ColumnName="user_cname" />
+                <ScalarProperty Name="user_password" ColumnName="user_password" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_action">
+            <EntityTypeMapping TypeName="productmanageModel.user_action">
+              <MappingFragment StoreEntitySet="user_action">
+                <ScalarProperty Name="isPermit" ColumnName="isPermit" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_action_id" ColumnName="user_action_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_project">
+            <EntityTypeMapping TypeName="productmanageModel.user_project">
+              <MappingFragment StoreEntitySet="user_project">
+                <ScalarProperty Name="manufacture_number" ColumnName="manufacture_number" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_project_id" ColumnName="user_project_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_remind">
+            <EntityTypeMapping TypeName="productmanageModel.user_remind">
+              <MappingFragment StoreEntitySet="user_remind">
+                <ScalarProperty Name="remind_three" ColumnName="remind_three" />
+                <ScalarProperty Name="remind_two" ColumnName="remind_two" />
+                <ScalarProperty Name="remind_one" ColumnName="remind_one" />
+                <ScalarProperty Name="manufacture_number" ColumnName="manufacture_number" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_remind_id" ColumnName="user_remind_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_role">
+            <EntityTypeMapping TypeName="productmanageModel.user_role">
+              <MappingFragment StoreEntitySet="user_role">
+                <ScalarProperty Name="isPermit" ColumnName="isPermit" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_role_id" ColumnName="user_role_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ProductManageDB" ZoomLevel="88">
+        <EntityTypeShape EntityType="productmanageModel.action" PointX="8.66884407991024" PointY="13.884103319553706" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.department" PointX="4.9356788568830492" PointY="11.739155148965844" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.filetype" PointX="5.087190798058729" PointY="13.185674658597295" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.important_part" PointX="8.6412818062311416" PointY="22.851029063971261" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.important_part_rejester" PointX="0.83118263857028563" PointY="30.701094149938363" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.plan" PointX="10.732772508046018" PointY="26.747722533879671" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.plan_extra" PointX="2.387144667276714" PointY="19.220934355268689" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.plan_outline_files" PointX="2.0636087088210546" PointY="27.099713293416293" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.product" PointX="3.50361508666706" PointY="15.222980640466782" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.product_part_time" PointX="1.5630132656372213" PointY="23.037029619811584" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.product_part_type" PointX="3.5556486284153763" PointY="24.028058778507663" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.product_type" PointX="7.8824775218416372" PointY="5.248870852053571" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.project" PointX="1.0891476502125839" PointY="9.0379579109316488" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.project_files" PointX="6.1404049834890309" PointY="0.51534803235686755" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.project_responsible" PointX="9.47475390018651" PointY="15.28178452666932" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.projectconfig" PointX="4.1497527957659921" PointY="10.40926529951825" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.questiontrace" PointX="6.1162432814558239" PointY="25.177498605650616" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.role" PointX="10.976158372581079" PointY="9.8856374965448115" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.role_action" PointX="2.4441911515054251" PointY="29.366896777118974" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.user" PointX="9.18633694256951" PointY="29.429626731867728" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.user_action" PointX="0.45211388378036854" PointY="16.036532007174813" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.user_project" PointX="4.552131271246882" PointY="30.214205621841458" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.user_remind" PointX="4.5158898776936764" PointY="14.66465411273048" Width="1.5" />
+        <EntityTypeShape EntityType="productmanageModel.user_role" PointX="8.25157320883664" PointY="31.208348154653027" Width="1.5" />
+        <AssociationConnector Association="productmanageModel.actiontoroleaction" >
+          <ConnectorPoint PointX="8.7968732499999991" PointY="16.227071940104167" />
+          <ConnectorPoint PointX="8.7968732499999991" PointY="22.8125" />
+          <ConnectorPoint PointX="8.4583333333333339" PointY="22.8125" />
+          <ConnectorPoint PointX="8.2916666666666661" PointY="22.8125" />
+          <ConnectorPoint PointX="8.2083333333333339" PointY="22.8125" />
+          <ConnectorPoint PointX="8.0416666666666661" PointY="22.8125" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="22.8125" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="22.8125" />
+          <ConnectorPoint PointX="6.0625" PointY="22.8125" />
+          <ConnectorPoint PointX="6.0625" PointY="30.1875" />
+          <ConnectorPoint PointX="4.09375" PointY="30.1875" />
+          <ConnectorPoint PointX="4.09375" PointY="30.360016276041669" />
+          <ConnectorPoint PointX="4" PointY="30.360016276041669" />
+        </AssociationConnector>
+        <AssociationConnector Association="productmanageModel.useractiontoactionid" >
+          <ConnectorPoint PointX="9.0312504999999987" PointY="16.227071940104167" />
+          <ConnectorPoint PointX="9.0312504999999987" PointY="18.428650716145839" />
+          <ConnectorPoint PointX="8.880206583333333" PointY="18.428650716145839" />
+          <ConnectorPoint PointX="8.7135399166666652" PointY="18.428650716145839" />
+          <ConnectorPoint PointX="8.2083333333333339" PointY="18.428650716145839" />
+          <ConnectorPoint PointX="8.0416666666666661" PointY="18.428650716145839" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="18.428650716145839" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="18.428650716145839" />
+          <ConnectorPoint PointX="2.4583333333333335" PointY="18.428650716145839" />
+          <ConnectorPoint PointX="2.2916666666666665" PointY="18.428650716145839" />
+          <ConnectorPoint PointX="2.09375" PointY="18.428650716145839" />
+          <ConnectorPoint PointX="2.09375" PointY="17.080526123046873" />
+          <ConnectorPoint PointX="2" PointY="17.080526123046873" />
+        </AssociationConnector>
+        <AssociationConnector Association="productmanageModel.department_id_key" >
+          <ConnectorPoint PointX="6.375" PointY="12.40625" />
+          <ConnectorPoint PointX="7.15625" PointY="12.40625" />
+          <ConnectorPoint PointX="7.15625" PointY="4.7622688802083326" />
+        </AssociationConnector>
+        <AssociationConnector Association="productmanageModel.departmentidkey" >
+          <ConnectorPoint PointX="6.375" PointY="12.765627499999994" />
+          <ConnectorPoint PointX="7.875" PointY="12.765627499999994" />
+          <ConnectorPoint PointX="7.875" PointY="29" />
+          <ConnectorPoint PointX="9.3854146666666658" PointY="29" />
+          <ConnectorPoint PointX="9.5520813333333336" PointY="29" />
+          <ConnectorPoint PointX="9.875" PointY="29" />
+          <ConnectorPoint PointX="9.875" PointY="29.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="productmanageModel.manufacture_number" >
+          <ConnectorPoint PointX="2.625" PointY="12.254590216146" />
+          <ConnectorPoint PointX="3.6979166666666665" PointY="12.254590216146" />
+          <ConnectorPoint PointX="3.8645833333333335" PointY="12.254590216146" />
+          <ConnectorPoint PointX="4.0625" PointY="12.254590216146" />
+          <ConnectorPoint PointX="4.0625" PointY="14.584473470052082" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="14.584473470052082" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="14.584473470052082" />
+          <ConnectorPoint PointX="8.0416666666666661" PointY="14.584473470052082" />
+          <ConnectorPoint PointX="8.2083333333333339" PointY="14.584473470052082" />
+          <ConnectorPoint PointX="8.5625" PointY="14.584473470052082" />
+          <ConnectorPoint PointX="8.5625" PointY="18.046611328125003" />
+          <ConnectorPoint PointX="8.7135399166666652" PointY="18.046611328125003" />
+          <ConnectorPoint PointX="8.880206583333333" PointY="18.046611328125003" />
+          <ConnectorPoint PointX="8.9479171666666648" PointY="18.046611328125003" />
+          <ConnectorPoint PointX="9.1145838333333327" PointY="18.046611328125003" />
+          <ConnectorPoint PointX="11.5" PointY="18.046611328125003" />
+          <ConnectorPoint PointX="11.5" PointY="26.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="productmanageModel.manufacture_number_product" >
+          <ConnectorPoint PointX="2.625" PointY="9.65625" />
+          <ConnectorPoint PointX="3.78125" PointY="9.65625" />
+          <ConnectorPoint PointX="3.78125" PointY="15.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="productmanageModel.manufacture_number_key" >
+          <ConnectorPoint PointX="2.625" PointY="10.015627500000164" />
+          <ConnectorPoint PointX="3.6979166666666665" PointY="10.015627500000164" />
+          <ConnectorPoint PointX="3.8645833333333335" PointY="10.015627500000164" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="10.015627500000164" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="10.015627500000164" />
+          <ConnectorPoint PointX="8.0416666666666661" PointY="10.015627500000164" />
+          <ConnectorPoint PointX="8.2083333333333339" PointY="10.015627500000164" />
+          <ConnectorPoint PointX="10.5625" PointY="10.015627500000164" />
+          <ConnectorPoint PointX="10.5625" PointY="15.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="productmanageModel.manufacture_number_keykey" >
+          <ConnectorPoint PointX="1.875" PointY="9" />
+          <ConnectorPoint PointX="1.875" PointY="2.6311344401041663" />
+          <ConnectorPoint PointX="6.125" PointY="2.6311344401041663" />
+        </AssociationConnector>
+        <AssociationConnector Association="productmanageModel.product_manufacture_number_key" >
+          <ConnectorPoint PointX="2.625" PointY="11.252295108073" />
+          <ConnectorPoint PointX="3.6979166666666665" PointY="11.252295108073" />
+          <ConnectorPoint PointX="3.8645833333333335" PointY="11.252295108073" />
+          <ConnectorPoint PointX="4.125" PointY="11.252295108073" />
+        </AssociationConnector>
+        <AssociationConnector Association="productmanageModel.user_id_key" >
+          <ConnectorPoint PointX="10.281252" PointY="29.375" />
+          <ConnectorPoint PointX="10.281252" PointY="27.064209798177089" />
+          <ConnectorPoint PointX="9.5520813333333336" PointY="27.064209798177089" />
+          <ConnectorPoint PointX="9.3854146666666658" PointY="27.064209798177089" />
+          <ConnectorPoint PointX="8.125" PointY="27.064209798177089" />
+          <ConnectorPoint PointX="8.125" PointY="6.8969734700520817" />
+          <ConnectorPoint PointX="7.625" PointY="6.8969734700520817" />
+          <ConnectorPoint PointX="7.625" PointY="5.0122688802083326" />
+          <ConnectorPoint PointX="7.875" PointY="5.0122688802083326" />
+          <ConnectorPoint PointX="7.875" PointY="2.6311344401041663" />
+          <ConnectorPoint PointX="7.625" PointY="2.6311344401041663" />
+        </AssociationConnector>
+        <AssociationConnector Association="productmanageModel.roleidtouserrole" >
+          <ConnectorPoint PointX="12.40625" PointY="11.4629931640625" />
+          <ConnectorPoint PointX="12.40625" PointY="33.173371175130214" />
+          <ConnectorPoint PointX="9.9583333333333339" PointY="33.173371175130214" />
+          <ConnectorPoint PointX="9.7916666666666661" PointY="33.173371175130214" />
+          <ConnectorPoint PointX="9.75" PointY="33.173371175130214" />
+        </AssociationConnector>
+        <AssociationConnector Association="productmanageModel.useractiontouserid" >
+          <ConnectorPoint PointX="9.468748" PointY="29.375" />
+          <ConnectorPoint PointX="9.468748" PointY="26.814209798177089" />
+          <ConnectorPoint PointX="8.375" PointY="26.814209798177089" />
+          <ConnectorPoint PointX="8.375" PointY="18.866150716145839" />
+          <ConnectorPoint PointX="8.2083333333333339" PointY="18.866150716145839" />
+          <ConnectorPoint PointX="8.0416666666666661" PointY="18.866150716145839" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="18.866150716145839" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="18.866150716145839" />
+          <ConnectorPoint PointX="2.375" PointY="18.866150716145839" />
+          <ConnectorPoint PointX="2.375" PointY="17.6520411845703" />
+          <ConnectorPoint PointX="2.1770833333333335" PointY="17.6520411845703" />
+          <ConnectorPoint PointX="2.0104166666666665" PointY="17.6520411845703" />
+          <ConnectorPoint PointX="2" PointY="17.6520411845703" />
+        </AssociationConnector>
+        <AssociationConnector Association="productmanageModel.useridtouserrole" >
+          <ConnectorPoint PointX="9.875" PointY="32.873190104166667" />
+          <ConnectorPoint PointX="9.875" PointY="33.66105224609376" />
+          <ConnectorPoint PointX="9" PointY="33.66105224609376" />
+          <ConnectorPoint PointX="9" PointY="33.411052246093753" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,956 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4AACFC5A-D45E-4CE7-ABF4-363BF978E053}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProductManager</RootNamespace>
+    <AssemblyName>ProductManager</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>ProductManager.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>ProductManager.App</SilverlightAppEntry>
+    <TestPageFileName>TestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>..\ProductManager.Web\ProductManager.Web.csproj</LinkedServerProject>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20408.0</ExpressionBlendVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Windows.Data.DomainServices, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="mscorlib" />
+    <Reference Include="SilverDox-SL4, Version=1.2.4430.23028, Culture=neutral, PublicKeyToken=0b663ab2d643885c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\SilverDox-SL4.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Libraries\Client\System.ComponentModel.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition.Initialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Libraries\Client\System.ComponentModel.Composition.Initialization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations, Version=2.0.5.0, Culture=neutral, PublicKeyToken=ddd0da4d3e678217, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Libraries\Client\System.ComponentModel.DataAnnotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.DomainServices.Client, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.ServiceModel.DomainServices.Client.Web, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.ServiceModel.Web.Extensions, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Libraries\Client\System.ServiceModel.Web.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Libraries\Client\System.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Libraries\Client\System.Windows.Controls.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Data.DataForm.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Libraries\Client\System.Windows.Controls.Data.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.DomainServices, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Libraries\Client\System.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Controls.Navigation, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Libraries\Client\System.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Controls.Toolkit.Internals, Version=4.0.5.0, Culture=neutral, PublicKeyToken=2c5c654d367bf4a7, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft SDKs\Silverlight\v4.0\Libraries\Client\System.Windows.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ConfirmWindow.xaml.cs">
+      <DependentUpon>ConfirmWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CustomMessage.xaml.cs">
+      <DependentUpon>CustomMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Message.cs" />
+    <Compile Include="Controls\NotifyWindow.xaml.cs">
+      <DependentUpon>NotifyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PointWindow.xaml.cs">
+      <DependentUpon>PointWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ReviewWindow.xaml.cs">
+      <DependentUpon>ReviewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TiledBackground.cs" />
+    <Compile Include="Cryptography\MD5CryptoServiceProvider.cs" />
+    <Compile Include="DoubleClickBehavior.cs" />
+    <Compile Include="DelegateCommand.cs" />
+    <Compile Include="FileUploader\CustomUri.cs" />
+    <Compile Include="FileUploader\FileStates.cs" />
+    <Compile Include="FileUploader\HttpFileUploader.cs" />
+    <Compile Include="FileUploader\IFileUploader.cs" />
+    <Compile Include="FileUploader\IUserFile.cs" />
+    <Compile Include="FileUploader\UserFile.cs" />
+    <Compile Include="MainLogin.xaml.cs">
+      <DependentUpon>MainLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Module\LoginInfo.cs" />
+    <Compile Include="Module\UserInfo.cs" />
+    <Compile Include="NotifyPropertyChanged.cs" />
+    <Compile Include="PlanManagerDomainContext.cs" />
+    <Compile Include="ProductDomainContext.cs" />
+    <Compile Include="Resource\ApplicationResource.cs" />
+    <Compile Include="Resource\ApplicationString.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApplicationString.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resource\ModuleString.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModuleString.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemManageDomainContext.cs" />
+    <Compile Include="TimeoutUtility.cs" />
+    <Compile Include="ViewData\Entity\ActionAndUserActionEntity.cs" />
+    <Compile Include="ViewData\Entity\ActionEntity.cs" />
+    <Compile Include="ViewData\Entity\DepartmentEntity.cs" />
+    <Compile Include="ViewData\Entity\FileTypeEntity.cs" />
+    <Compile Include="ViewData\Entity\ImportantPartEntity.cs" />
+    <Compile Include="ViewData\Entity\ImportantPartRejesterEntity.cs" />
+    <Compile Include="ViewData\Entity\ModifyPasswordEntity.cs" />
+    <Compile Include="ViewData\Entity\PlanEntity.cs" />
+    <Compile Include="ViewData\Entity\PlanExtraEntity.cs" />
+    <Compile Include="ViewData\Entity\PlanOutlineFileEntity.cs" />
+    <Compile Include="ViewData\Entity\ProductEntity.cs" />
+    <Compile Include="ViewData\Entity\ProductPartTimeEntity.cs" />
+    <Compile Include="ViewData\Entity\ProductPartTypeEntity.cs" />
+    <Compile Include="ViewData\Entity\ProjectConfigEntity.cs" />
+    <Compile Include="ViewData\Entity\ProjectFilesEntity.cs" />
+    <Compile Include="ViewData\Entity\ProjectResponsibleEntity.cs" />
+    <Compile Include="ViewData\Entity\ProductTypeEntity.cs" />
+    <Compile Include="ViewData\Entity\QuestionTraceEntity.cs" />
+    <Compile Include="ViewData\Entity\ResponsiblePersonEntity.cs" />
+    <Compile Include="ViewData\Entity\RoleActionEntity.cs" />
+    <Compile Include="ViewData\Entity\ActionAndRoleActionEntity.cs" />
+    <Compile Include="ViewData\Entity\RoleEntity.cs" />
+    <Compile Include="ViewData\Entity\ProjectEntity.cs" />
+    <Compile Include="ViewData\Entity\UserActionEntity.cs" />
+    <Compile Include="ViewData\Entity\UserEntity.cs" />
+    <Compile Include="ViewData\Entity\UserProjectEntity.cs" />
+    <Compile Include="ViewData\Entity\UserRemindEntity.cs" />
+    <Compile Include="ViewData\HomeMainMenu.cs" />
+    <Compile Include="ViewData\IMainMenu.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewData\SubMenu\DepartmentSubMenu.cs" />
+    <Compile Include="ViewData\SubMenu\FileTypeSubMenu.cs" />
+    <Compile Include="ViewData\SubMenu\ImportantPartSubMenu.cs" />
+    <Compile Include="ViewData\SubMenu\ISubMenu.cs" />
+    <Compile Include="ViewData\MenuType.cs" />
+    <Compile Include="ViewData\SubMenu\OnLineUserSubMenu.cs" />
+    <Compile Include="ViewData\SubMenu\PlanEditSubMenu.cs" />
+    <Compile Include="ViewData\SubMenu\PlanEvaluateSubMenu.cs" />
+    <Compile Include="ViewData\PlanManagerMainMenu.cs" />
+    <Compile Include="ViewData\SubMenu\PlanExportSubMenu.cs" />
+    <Compile Include="ViewData\SubMenu\PlanStatisticsSubMenu.cs" />
+    <Compile Include="ViewData\SubMenu\PlanTraceSubMenu.cs" />
+    <Compile Include="ViewData\ProductManagerMainMenu.cs" />
+    <Compile Include="ViewData\SubMenu\ProductDocManagerSubMenu.cs" />
+    <Compile Include="ViewData\SubMenu\ProductDocViewSubMenu.cs" />
+    <Compile Include="ViewData\SubMenu\ProductListSubMenu.cs" />
+    <Compile Include="ViewData\SubMenu\ProductManageSubMenu.cs" />
+    <Compile Include="ViewData\SubMenu\ProductPartTypeSubMenu.cs" />
+    <Compile Include="ViewData\SubMenu\ProductTypeSubMenu.cs" />
+    <Compile Include="ViewData\SubMenu\QuestionTraceListSubMenu.cs" />
+    <Compile Include="ViewData\SubMenu\QuestionTraceSubMenu.cs" />
+    <Compile Include="ViewData\SubMenu\ResponsiblePersonListSubMenu.cs" />
+    <Compile Include="ViewData\SubMenu\RightManagerSubMenu.cs" />
+    <Compile Include="ViewData\SubMenu\RoleRightManagerSubMenu.cs" />
+    <Compile Include="ViewData\SubMenu\SubMenuType.cs" />
+    <Compile Include="ViewData\SystemManagerMainMenu.cs" />
+    <Compile Include="ViewData\SubMenu\UserManagerSubMenu.cs" />
+    <Compile Include="ViewModel\HomePageViewModel.cs" />
+    <Compile Include="ViewModel\MainLoginViewModel.cs" />
+    <Compile Include="ViewModel\MainPageViewModel.cs" />
+    <Compile Include="ViewModel\ModifyPasswordWindowViewModel.cs" />
+    <Compile Include="ViewModel\PlanManager\ColumnModel.cs" />
+    <Compile Include="ViewModel\PlanManager\PlanEvaluateViewModel.cs" />
+    <Compile Include="ViewModel\PlanManager\PlanExportViewModel.cs" />
+    <Compile Include="ViewModel\PlanManager\PlanStatisticsViewModel.cs" />
+    <Compile Include="ViewModel\PlanManager\PlanTraceViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\ChangeManufactureNumberWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\DeleteImportantPartRejisterWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\DeleteImportantPartWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\FreezeProjectWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\ImportantPartManagerViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\ImportantPartRejesterWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\ImportantPartWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\ImportImportantPartRejesterWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\ImportImportantPartWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\ImportProductWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\ImportProjectWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\LinkFileViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\LinkResponsePersonModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\QuestionTraceListViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\ResponsiblePersonListViewModel.cs" />
+    <Compile Include="Views\ProductManagers\ImportProductWindow.xaml.cs">
+      <DependentUpon>ImportProductWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\InvoiceCompletionTimeWindow.xaml.cs">
+      <DependentUpon>InvoiceCompletionTimeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ProductManagers\ModifyFileWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\ProductListViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\ProductManagerMainViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\ProductPartTimeWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\SetContractNumberWindowViewModel.cs" />
+    <Compile Include="ViewModel\SystemManager\DepartmentManagerViewModel.cs" />
+    <Compile Include="ViewModel\SystemManager\DepartmentWindowViewModel.cs.cs" />
+    <Compile Include="ViewModel\SystemManager\OnLineUserListViewModel.cs" />
+    <Compile Include="ViewModel\SystemManager\ProductPartTypeManagerViewModel.cs" />
+    <Compile Include="ViewModel\SystemManager\ProductPartTypeWindowViewModel.cs" />
+    <Compile Include="Views\PlanManager\PlanEdit.xaml.cs">
+      <DependentUpon>PlanEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanManager\PlanEvaluate.xaml.cs">
+      <DependentUpon>PlanEvaluate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanManager\PlanExport.xaml.cs">
+      <DependentUpon>PlanExport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanManager\PlanListEditDataGrid.xaml.cs">
+      <DependentUpon>PlanListEditDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanManager\PlanListEditWindow.xaml.cs">
+      <DependentUpon>PlanListEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanManager\PlanListEvaluateDataGrid.xaml.cs">
+      <DependentUpon>PlanListEvaluateDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanManager\PlanListEvaluateResultChart.xaml.cs">
+      <DependentUpon>PlanListEvaluateResultChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanManager\PlanListEvaluateWindow.xaml.cs">
+      <DependentUpon>PlanListEvaluateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanManager\PlanListHistoryWindow.xaml.cs">
+      <DependentUpon>PlanListHistoryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanManager\PlanListStatisticsDataGrid.xaml.cs">
+      <DependentUpon>PlanListStatisticsDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanManager\PlanListStatisticsWindow.xaml.cs">
+      <DependentUpon>PlanListStatisticsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanManager\PlanListTraceDataGrid.xaml.cs">
+      <DependentUpon>PlanListTraceDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanManager\PlanListTraceWindow.xaml.cs">
+      <DependentUpon>PlanListTraceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanManager\PlanManagerMain.xaml.cs">
+      <DependentUpon>PlanManagerMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanManager\PlanSetRemindDayWindow.xaml.cs">
+      <DependentUpon>PlanSetRemindDayWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanManager\PlanStatistics.xaml.cs">
+      <DependentUpon>PlanStatistics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanManager\PlanTrace.xaml.cs">
+      <DependentUpon>PlanTrace.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\ChangeProductManufactureNumberWindow.xaml.cs">
+      <DependentUpon>ChangeProductManufactureNumberWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ProductManagers\DeleteFileViewWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\DeleteFileWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\DeleteProjectWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\QuestionTraceViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\QuestionTraceWindowViewModel.cs" />
+    <Compile Include="ViewModel\SystemManager\FileTypeManagerViewModel.cs" />
+    <Compile Include="ViewModel\SystemManager\FileTypeWindowViewModel.cs" />
+    <Compile Include="ViewModel\SystemManager\ProductTypeManagerViewModel.cs" />
+    <Compile Include="ViewModel\SystemManager\ProductTypeWindowViewModel.cs" />
+    <Compile Include="Views\ModifyPasswrodWindow.xaml.cs">
+      <DependentUpon>ModifyPasswrodWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\PlanManagerViewModel.cs" />
+    <Compile Include="ViewModel\PlanManager\PlanEditViewModel.cs" />
+    <Compile Include="ViewModel\PlanManager\PlanListViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\ProductDocManagerViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\ProductDocViewViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\ProductManagersViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\ProductWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\ProjectResponsibleWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagers\UpdateFileWindowViewModel.cs" />
+    <Compile Include="Views\ProductManagers\DeleteFileViewWindow.xaml.cs">
+      <DependentUpon>DeleteFileViewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\DeleteFileWindow.xaml.cs">
+      <DependentUpon>DeleteFileWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\DeleteImportantPartRejisterWindow.xaml.cs">
+      <DependentUpon>DeleteImportantPartRejisterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\DeleteImportantPartWindow.xaml.cs">
+      <DependentUpon>DeleteImportantPartWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\DeleteProjectWindow.xaml.cs">
+      <DependentUpon>DeleteProjectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\FreezeProjectWindow.xaml.cs">
+      <DependentUpon>FreezeProjectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\ImportantPartManager.xaml.cs">
+      <DependentUpon>ImportantPartManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\ImportantPartRejesterWindow.xaml.cs">
+      <DependentUpon>ImportantPartRejesterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\ImportantPartWindow.xaml.cs">
+      <DependentUpon>ImportantPartWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\ImportImportantPartRejesterWindow.xaml.cs">
+      <DependentUpon>ImportImportantPartRejesterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\ImportImportantPartWindow.xaml.cs">
+      <DependentUpon>ImportImportantPartWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\ImportProjectWindow.xaml.cs">
+      <DependentUpon>ImportProjectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\LinkFileWindow.xaml.cs">
+      <DependentUpon>LinkFileWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\LinkResponsePersonConvert.cs" />
+    <Compile Include="Views\ProductManagers\LinkResponsePersonWindow.xaml.cs">
+      <DependentUpon>LinkResponsePersonWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\ModifyFileWindow.xaml.cs">
+      <DependentUpon>ModifyFileWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\ProductList.xaml.cs">
+      <DependentUpon>ProductList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\ProductPartTimeWindow.xaml.cs">
+      <DependentUpon>ProductPartTimeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\ProjectResponsibleWindow.xaml.cs">
+      <DependentUpon>ProjectResponsibleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ProductManagers\ProjectWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProductManagerViewModel.cs" />
+    <Compile Include="ViewModel\SystemManagerViewModel.cs" />
+    <Compile Include="ViewModel\SystemManager\RightManagerViewModel.cs" />
+    <Compile Include="ViewModel\SystemManager\RoleRightManagerViewModel.cs" />
+    <Compile Include="ViewModel\SystemManager\UserManagerViewModel.cs" />
+    <Compile Include="ViewModel\SystemManager\UserEntityViewModule.cs" />
+    <Compile Include="Views\PlanManager.xaml.cs">
+      <DependentUpon>PlanManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManager.xaml.cs">
+      <DependentUpon>ProductManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\ProductDocManager.xaml.cs">
+      <DependentUpon>ProductDocManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\ProductDocView.xaml.cs">
+      <DependentUpon>ProductDocView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\ProductManager.xaml.cs">
+      <DependentUpon>ProductManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\ProductManagerMain.xaml.cs">
+      <DependentUpon>ProductManagerMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\ProductWindow.xaml.cs">
+      <DependentUpon>ProductWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\ProjectWindow.xaml.cs">
+      <DependentUpon>ProjectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\QuestionTrace.xaml.cs">
+      <DependentUpon>QuestionTrace.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\QuestionTraceList.xaml.cs">
+      <DependentUpon>QuestionTraceList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\QuestionTraceWindow.xaml.cs">
+      <DependentUpon>QuestionTraceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\ResponsiblePersonList.xaml.cs">
+      <DependentUpon>ResponsiblePersonList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\SetContractNumberWindow.xaml.cs">
+      <DependentUpon>SetContractNumberWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\SetDeliveryTimeWindow.xaml.cs">
+      <DependentUpon>SetDeliveryTimeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManagers\UpdateFileWindow.xaml.cs">
+      <DependentUpon>UpdateFileWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SystemManager.xaml.cs">
+      <DependentUpon>SystemManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ErrorWindow.xaml.cs">
+      <DependentUpon>ErrorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\SystemManager\DepartmentManager.xaml.cs">
+      <DependentUpon>DepartmentManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SystemManager\DepartmentWindow.xaml.cs">
+      <DependentUpon>DepartmentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SystemManager\FileTypeManager.xaml.cs">
+      <DependentUpon>FileTypeManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SystemManager\FileTypeWindow.xaml.cs">
+      <DependentUpon>FileTypeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SystemManager\OnLineUserList.xaml.cs">
+      <DependentUpon>OnLineUserList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SystemManager\ProductPartTypeManager.xaml.cs">
+      <DependentUpon>ProductPartTypeManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SystemManager\ProductPartTypeWindow.xaml.cs">
+      <DependentUpon>ProductPartTypeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SystemManager\ProductTypeManager.xaml.cs">
+      <DependentUpon>ProductTypeManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SystemManager\ProductTypeWindow.xaml.cs">
+      <DependentUpon>ProductTypeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SystemManager\RightManager.xaml.cs">
+      <DependentUpon>RightManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SystemManager\RoleRightManager.xaml.cs">
+      <DependentUpon>RoleRightManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SystemManager\SystemManagerMain.xaml.cs">
+      <DependentUpon>SystemManagerMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SystemManager\UserEntityWindow.xaml.cs">
+      <DependentUpon>UserEntityWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SystemManager\UserManager.xaml.cs">
+      <DependentUpon>UserManager.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Assets\Brushes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\CoreStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Fonts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\SDKStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\ToolkitStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ConfirmWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CustomMessage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\NotifyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PointWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ReviewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ProductManagers\ImportProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\InvoiceCompletionTimeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PlanManager\PlanEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlanManager\PlanEvaluate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlanManager\PlanExport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlanManager\PlanListEditDataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlanManager\PlanListEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlanManager\PlanListEvaluateDataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlanManager\PlanListEvaluateResultChart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlanManager\PlanListEvaluateWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlanManager\PlanListHistoryWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlanManager\PlanListStatisticsDataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlanManager\PlanListStatisticsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlanManager\PlanListTraceDataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlanManager\PlanListTraceWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlanManager\PlanManagerMain.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlanManager\PlanSetRemindDayWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlanManager\PlanStatistics.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlanManager\PlanTrace.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ProductManagers\ChangeProductManufactureNumberWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ModifyPasswrodWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\DeleteFileViewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\DeleteFileWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\DeleteImportantPartRejisterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\DeleteImportantPartWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\DeleteProjectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\FreezeProjectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\ImportantPartManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\ImportantPartRejesterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\ImportantPartWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\ImportImportantPartRejesterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\ImportImportantPartWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\ImportProjectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\LinkFileWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\LinkResponsePersonWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\ModifyFileWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\ProductList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\ProductPartTimeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\ProjectResponsibleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PlanManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\ProductDocManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\ProductDocView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\ProductManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\ProductManagerMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\ProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\ProjectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\QuestionTrace.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\QuestionTraceList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\QuestionTraceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\ResponsiblePersonList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\SetContractNumberWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\SetDeliveryTimeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductManagers\UpdateFileWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SystemManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SystemManager\DepartmentManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SystemManager\DepartmentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SystemManager\FileTypeManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SystemManager\FileTypeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SystemManager\OnLineUserList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SystemManager\ProductPartTypeManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SystemManager\ProductPartTypeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SystemManager\ProductTypeManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SystemManager\ProductTypeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SystemManager\RightManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SystemManager\RoleRightManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SystemManager\SystemManagerMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SystemManager\UserEntityWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SystemManager\UserManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Resource Include="Assets\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Page Include="Views\ErrorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\DataSources\ProductManager.Web.Service.PlanManagerDomainContext.datasource" />
+    <None Include="Properties\DataSources\ProductManager.Web.Service.ProductDomainContext.datasource" />
+    <None Include="Properties\DataSources\ProductManager.Web.Service.SystemManageDomainContext.datasource" />
+    <None Include="web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\backgroundshadow.png" />
+    <Resource Include="Images\backgroundtexture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HtLogo.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\LoginBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\ApplicationString.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ApplicationString.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource\ModuleString.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModuleString.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\OutOfBrowserSettings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Icons\Bullet-question-256.png" />
+    <Resource Include="Controls\Icons\button_cancel-256.png" />
+    <Resource Include="Controls\Icons\Information-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cover.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Icons\disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Icons\zoom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Icons\arrow_turn_left.png" />
+    <Resource Include="Controls\Icons\arrow_turn_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Icons\arrow_left.png" />
+    <Resource Include="Controls\Icons\arrow_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Icons\zoom_in.png" />
+    <Resource Include="Controls\Icons\zoom_out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Icons\tag_blue_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LiteExcelLibrary\Lite.ExcelLibrary.csproj">
+      <Project>{fcea2dc7-5208-4117-9589-92a89ba24583}</Project>
+      <Name>Lite.ExcelLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LiteLibrary\Lite.Library.csproj">
+      <Project>{44ba6033-3718-4e61-863d-ca67bb4af893}</Project>
+      <Name>Lite.Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

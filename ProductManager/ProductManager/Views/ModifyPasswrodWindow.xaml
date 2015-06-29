@@ -1,0 +1,34 @@
+﻿<controls:ChildWindow xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"  xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"  x:Class="ProductManager.Views.ModifyPasswrodWindow"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           Width="324" Height="193" 
+           Title="{Binding Title}"
+           FontFamily="{StaticResource ContentFontFamily}"
+           FontSize="{StaticResource ContentFontSize}"
+           Style="{StaticResource JPBChildWindow}"
+           HasCloseButton="False">
+    <toolkit:BusyIndicator IsBusy="{Binding IsBusy}" BusyContent="请稍候..." FontSize="13">
+        <Grid x:Name="LayoutRoot" Margin="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32"/>
+                <RowDefinition Height="32"/>
+                <RowDefinition Height="32"/>
+                <RowDefinition Height="300*"/>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="200*"/>
+            </Grid.ColumnDefinitions>
+            <sdk:Label HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Content="原密码："/>
+            <PasswordBox Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="0" Password="{Binding ModifyPasswordEntity.OldPassword,Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" VerticalAlignment="Center" Width="200" />
+            <sdk:Label Grid.Row="1"  HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Content="新密码："/>
+            <PasswordBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="0" Password="{Binding ModifyPasswordEntity.NewPassword,Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" VerticalAlignment="Center" Width="200" />
+            <sdk:Label Grid.Row="2" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Content="确认新密码："/>
+            <PasswordBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="0" Password="{Binding ModifyPasswordEntity.RepNewPassword,Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" VerticalAlignment="Center" Width="200" />
+            <Button Content="取消" Width="75" HorizontalAlignment="Right" Margin="0,12,0,0" Grid.Column="1" Grid.Row="4" Style="{StaticResource BlueButton}" Command="{Binding OnCancel}"/>
+            <Button Content="确定" Width="75" HorizontalAlignment="Right" Margin="0,12,79,0" Grid.Column="1" Grid.Row="4" Style="{StaticResource BlueButton}"  Command="{Binding OnModifyPassword}"/>
+        </Grid>
+    </toolkit:BusyIndicator>
+</controls:ChildWindow>

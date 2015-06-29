@@ -1,0 +1,23 @@
+﻿<navigation:Page x:Class="ProductManager.Views.ProductManager" 
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           mc:Ignorable="d"
+           xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+           d:DesignWidth="640" d:DesignHeight="480"
+           Style="{StaticResource PageStyle}"
+           Title="产品管理" xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit">
+    <Grid x:Name="LayoutRoot">
+        <Border x:Name="ContentBorder" Style="{StaticResource NavContentBorderStyle}" Grid.Row="2" Margin="0,33,0,0" BorderThickness="1" BorderBrush="Black">
+            <navigation:Frame x:Name="ProductManagerContentFrame" Style="{StaticResource NavProductManagerContentFrameStyle}" Navigated="ProductManagerContentFrame_Navigated" NavigationFailed="ProductManagerContentFrame_NavigationFailed" Background="#FF646464" BorderBrush="#FF646464" />
+        </Border>
+        <!--<toolkit:Expander HorizontalAlignment="Left" Header="{Binding CurrentPageName, Mode=TwoWay}" IsExpanded="{Binding IsExpand,Mode=TwoWay}" VerticalAlignment="Top">-->
+        <Border Background="#7F083664" BorderBrush="#FF00154D" BorderThickness="1" Margin="0,0,0,0" VerticalAlignment="Top" >
+            <StackPanel Name="ProductManagerMenu" VerticalAlignment="Stretch" HorizontalAlignment="Left" Margin="5,0,1,1" Orientation="Horizontal">
+
+            </StackPanel>
+        </Border>
+        <!--</toolkit:Expander>-->
+    </Grid>
+</navigation:Page>

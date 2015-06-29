@@ -1,0 +1,29 @@
+﻿<controls:ChildWindow x:Class="ProductManager.Views.PlanManager.PlanSetRemindDayWindow"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+           xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"  
+           FontFamily="{StaticResource ContentFontFamily}" 
+           FontSize="{StaticResource ContentFontSize}" 
+           Style="{StaticResource JPBChildWindow}" 
+           HasCloseButton="False"
+           Width="396" Height="228" 
+           Title="设置提醒">
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+         <sdk:Label Content="设计提前提醒(天):" HorizontalAlignment="Left" Margin="42,28,0,150" VerticalAlignment="Top" Foreground="Black" FontWeight="Normal" Height="18" Width="120"  />
+        <toolkit:NumericUpDown HorizontalAlignment="Left" Margin="155,22,0,148" Name="remindDayDesignNumericUpDown" Minimum="0" Maximum="100" Increment="1" Value="{Binding Path=RemindDayDesign, Mode=TwoWay}" VerticalAlignment="Top" Width="114" Height="26"/>
+        <sdk:Label Content="采购提前提醒(天):" HorizontalAlignment="Left" Margin="42,68,0,150" VerticalAlignment="Top" Foreground="Black" FontWeight="Normal" Height="18" Width="120" />
+        <toolkit:NumericUpDown HorizontalAlignment="Left" Margin="155,62,0,148" Name="remindDayPurchaseNumericUpDown" Minimum="0" Maximum="100" Increment="1" Value="{Binding Path=RemindDayPurchase, Mode=TwoWay}" VerticalAlignment="Top" Width="114" Height="26"/>
+        <sdk:Label Content="生产提前提醒(天):" HorizontalAlignment="Left" Margin="42,108,0,150" VerticalAlignment="Top" Foreground="Black" FontWeight="Normal" Height="18" Width="120" />
+        <toolkit:NumericUpDown HorizontalAlignment="Left" Margin="155,102,0,148" Name="remindDayProduceNumericUpDown" Minimum="0" Maximum="100" Increment="1" Value="{Binding Path=RemindDayProduce, Mode=TwoWay}" VerticalAlignment="Top" Width="114" Height="26"/>
+        <Button x:Name="CancelButton" Content="取消" Click="CancelButton_Click" Width="75" HorizontalAlignment="Right" Margin="0,146,0,140" />
+        <Button x:Name="OKButton" Content="设置" Click="OKButton_Click" Width="75" HorizontalAlignment="Right" Margin="0,146,75,140" />
+    </Grid>
+</controls:ChildWindow>

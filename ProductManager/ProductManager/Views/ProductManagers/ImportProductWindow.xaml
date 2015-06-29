@@ -1,0 +1,48 @@
+﻿<sdk:ChildWindow x:Class="ProductManager.Views.ProductManagers.ImportProductWindow"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+           xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+           Width="810" Height="420" 
+           Title="导入"
+           FontFamily="{StaticResource ContentFontFamily}"
+           FontSize="{StaticResource ContentFontSize}"
+           Style="{StaticResource JPBChildWindow}">
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <toolkit:BusyIndicator IsBusy="{Binding IsBusy}" BusyContent="请稍候..." FontSize="13">
+            <Grid Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="33"/>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <StackPanel Margin="0" Grid.Row="0" Orientation="Horizontal">
+                    <Button Content="导入" Style="{StaticResource BlueButton}" Command="{Binding OnImport}"/>
+                    <Button Content="下载模版" Style="{StaticResource BlueButton}" Command="{Binding OnDownloadTemp}"/>
+                </StackPanel>
+                <sdk:DataGrid Margin="0"
+                    Grid.Row="1"
+                    AutoGenerateColumns="False"
+                    ItemsSource="{Binding ProductEntityList}"
+                    SelectionMode="Single"
+                    HeadersVisibility="All"
+                    GridLinesVisibility="All"
+                    FrozenColumnCount="1">
+                    <sdk:DataGrid.Columns>
+                        <sdk:DataGridTextColumn Binding="{Binding ManufactureNumber, Mode=OneWay}" Header="生产令号" IsReadOnly="True" Width="100" />
+                        <sdk:DataGridTextColumn Binding="{Binding ProductID, Mode=OneWay}" Header="序列号" IsReadOnly="True" Width="100" />
+                        <sdk:DataGridTextColumn Binding="{Binding ProductTypeString, Mode=OneWay}" Header="产品类型" IsReadOnly="True" Width="100" />
+                        <sdk:DataGridTextColumn Binding="{Binding ProductName, Mode=OneWay}" Header="名称" IsReadOnly="True" Width="150" />
+                        <sdk:DataGridTextColumn Binding="{Binding ProductIDCreateData, Mode=OneWay, StringFormat=yyyy-MM-dd}" Header="编制日期" IsReadOnly="True" Width="50" />
+                        <sdk:DataGridTextColumn Binding="{Binding ProductOutputNumber, Mode=OneWay}" Header="出厂编号" IsReadOnly="True" Width="75" />
+                        <sdk:DataGridTextColumn Binding="{Binding ProductDescript1, Mode=OneWay}" Header="备注1" IsReadOnly="True" Width="75" />
+                        <sdk:DataGridTextColumn Binding="{Binding ProductDescript2, Mode=OneWay}" Header="备注2" IsReadOnly="True" Width="75" />
+                    </sdk:DataGrid.Columns>
+                </sdk:DataGrid>
+                <Button x:Name="CancelButton" Content="取消" Command="{Binding OnCancel}" Width="75" HorizontalAlignment="Right" Margin="0,12,0,0" Grid.Row="2" Style="{StaticResource BlueButton}" />
+                <Button x:Name="OKButton" Content="确定" Command="{Binding OnOK}" Width="75" HorizontalAlignment="Right" Margin="0,12,79,0" Grid.Row="2" Style="{StaticResource BlueButton}" />
+            </Grid>
+        </toolkit:BusyIndicator>
+    </Grid>
+</sdk:ChildWindow>

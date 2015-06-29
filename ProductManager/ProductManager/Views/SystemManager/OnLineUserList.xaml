@@ -1,0 +1,32 @@
+﻿<navigation:Page xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"  
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+           xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" x:Class="ProductManager.Views.SystemManager.OnLineUserList"
+           mc:Ignorable="d"
+           d:DesignWidth="640" d:DesignHeight="480"
+           Title="OnLineUserList Page">
+    <Grid x:Name="LayoutRoot">
+        <toolkit:BusyIndicator x:Name="BusyIndicator" IsBusy="{Binding IsBusy}" BusyContent="请稍候..." FontSize="13" >
+            <Grid Margin="0,0,0,0">
+                <sdk:DataGrid
+                    Margin="0,33,0,0"
+                    AutoGenerateColumns="False" 
+                    ItemsSource="{Binding OnLineUserList}"
+                    SelectionMode="Single"
+                    HeadersVisibility="All"
+                    GridLinesVisibility="All">
+                    <sdk:DataGrid.Columns>
+                        <sdk:DataGridTextColumn Binding="{Binding Path=UserName, Mode=OneWay}" Header="用户名" IsReadOnly="True" Width="150" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=CUserName, Mode=OneWay}" Header="姓名" IsReadOnly="True" Width="150" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=UserPhoneNumber, Mode=OneWay}" Header="联系电话" IsReadOnly="True" Width="150" />
+                    </sdk:DataGrid.Columns>
+                </sdk:DataGrid>
+                <Button Content="刷新" HorizontalAlignment="Left" Margin="0,2,0,0" VerticalAlignment="Top" Width="65" Style="{StaticResource OrangeButton}" Command="{Binding OnRefash}"/>
+
+            </Grid>
+        </toolkit:BusyIndicator>
+    </Grid>
+</navigation:Page>

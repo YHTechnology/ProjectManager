@@ -1,0 +1,84 @@
+﻿<navigation:Page xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"  
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+           xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" x:Class="ProductManager.Views.ProductManagers.QuestionTraceList"
+           mc:Ignorable="d"
+           d:DesignWidth="640" d:DesignHeight="480"
+           Title="QuestionTraceList Page">
+    <Grid x:Name="LayoutRoot">
+        <toolkit:BusyIndicator x:Name="BusyIndicator" IsBusy="{Binding IsBusy}" BusyContent="请稍候..." FontSize="13">
+            <Grid Margin="0">
+                <Border>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="33" VerticalAlignment="Top">
+                    </StackPanel>
+                </Border>
+                <sdk:DataGrid Margin="0,37,0,0"
+                              AutoGenerateColumns="False"
+                              ItemsSource="{Binding QuestionTraceEntityList}"
+                              SelectionMode="Single"
+                              HeadersVisibility="All"
+                              GridLinesVisibility="All"
+                              FrozenColumnCount="1">
+                    <sdk:DataGrid.Columns>
+                        <sdk:DataGridTextColumn Binding="{Binding QuestionDescript, Mode=OneWay}" Header="问题描述" IsReadOnly="True" Width="100"/>
+                        <sdk:DataGridTextColumn Binding="{Binding QuestionAnswer, Mode=OneWay}" Header="回答" IsReadOnly="True" Width="150" />
+                        <sdk:DataGridTextColumn Binding="{Binding QuestionResDepartmentName, Mode=OneWay}" Header="责任部门" IsReadOnly="True" Width="150" />
+                        <sdk:DataGridTextColumn Binding="{Binding QuestionHandDepartmentName, Mode=OneWay}" Header="处理部门" IsReadOnly="True" Width="100" />
+                        <sdk:DataGridTextColumn Binding="{Binding QuestionTraceDepartmentName, Mode=OneWay}" Header="追踪部门" IsReadOnly="True" Width="150" />
+                        <sdk:DataGridTextColumn Binding="{Binding QuestionStartTime, Mode=OneWay, StringFormat=yyyy-MM-dd}" Header="提问日期" IsReadOnly="True" Width="150" />
+                        <sdk:DataGridTextColumn Binding="{Binding QuestionLastAnswerTime, Mode=OneWay, StringFormat=yyyy-MM-dd}" Header="最后回答日期" IsReadOnly="True" Width="150" />
+                        <sdk:DataGridTextColumn Binding="{Binding LastAnswerUserString, Mode=OneWay}" Header="最后回答人员" IsReadOnly="True" Width="150" />
+                        <sdk:DataGridTextColumn Binding="{Binding UserIDMainString, Mode=OneWay}" Header="负责人" IsReadOnly="True" Width="150" />
+                        <sdk:DataGridTextColumn Binding="{Binding UserIDCP1String, Mode=OneWay}" Header="抄送1" IsReadOnly="True" Width="100" />
+                        <sdk:DataGridTextColumn Binding="{Binding UserIDCP2String, Mode=OneWay}" Header="抄送2" IsReadOnly="True" Width="100" />
+                        <sdk:DataGridTextColumn Binding="{Binding OwnerUserString, Mode=OneWay}" Header ="提问人" IsReadOnly="True" Width="100" />
+                        <sdk:DataGridTextColumn Binding="{Binding QuestionIsCloseString, Mode=OneWay}" Header ="是否关闭" IsReadOnly="True" Width="100" />
+                    </sdk:DataGrid.Columns>
+                </sdk:DataGrid>
+                <toolkit:Expander Margin="0,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Header="查询" IsExpanded="{Binding ShowExpander,Mode=TwoWay}">
+                    <toolkit:Expander.Content>
+                        <StackPanel Orientation="Vertical" Margin="0,0,0,0" Background="#EF222E57" >
+                            <!--<StackPanel Orientation="Horizontal">
+                                <sdk:Label Content="生产令号" VerticalAlignment="Center" Foreground="White" Margin="5,2,2,2" Width="100"/>
+                                <TextBox Margin="2" Text="{Binding ManufactureNumberSearch, Mode=TwoWay}" VerticalAlignment="Center" Width="150"/>
+                            </StackPanel>-->
+                            <StackPanel Orientation="Horizontal">
+                                <sdk:Label Content="问题内容" VerticalAlignment="Center" Foreground="White" Margin="5,2,2,2" Width="100"/>
+                                <TextBox Margin="2" Text="{Binding QuestionContext, Mode=TwoWay}" VerticalAlignment="Center" Width="150"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <sdk:Label Content="责任部门" VerticalAlignment="Center" Foreground="White" Margin="5,2,2,2" Width="100"/>
+                                <ComboBox Width="150" ItemsSource="{Binding DepartmentEntityList}" DisplayMemberPath="DepartmentName" SelectedValue="{Binding QuestionRspDepartmentID, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" SelectedValuePath="DepartmentID"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <sdk:Label Content="追踪部门" VerticalAlignment="Center" Foreground="White" Margin="5,2,2,2" Width="100"/>
+                                <ComboBox Width="150" ItemsSource="{Binding DepartmentEntityList}" DisplayMemberPath="DepartmentName" SelectedValue="{Binding QuestionTraceDepartmentID, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" SelectedValuePath="DepartmentID"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <sdk:Label Content="提问日期(开始)" VerticalAlignment="Center" Foreground="White" Margin="5,2,2,2" Width="100"/>
+                                <sdk:DatePicker Width="150" SelectedDate="{Binding QuestionStartTime, Mode=TwoWay}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <sdk:Label Content="提问日期(结束)" VerticalAlignment="Center" Foreground="White" Margin="5,2,2,2" Width="100"/>
+                                <sdk:DatePicker Width="150" SelectedDate="{Binding QuestionEndTime, Mode=TwoWay}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <sdk:Label Content="回答日期(开始)" VerticalAlignment="Center" Foreground="White" Margin="5,2,2,2" Width="100"/>
+                                <sdk:DatePicker Width="150" SelectedDate="{Binding AnswerStartTime, Mode=TwoWay}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <sdk:Label Content="回答日期(结束)" VerticalAlignment="Center" Foreground="White" Margin="5,2,2,2" Width="100"/>
+                                <sdk:DatePicker Width="150" SelectedDate="{Binding AnswerEndTime, Mode=TwoWay}"/>
+                            </StackPanel>
+                            
+                            <Button Margin="2" Content="查询" Style="{StaticResource GreenButton}" Command="{Binding OnSearch}"/>
+                        </StackPanel>
+                    </toolkit:Expander.Content>
+                </toolkit:Expander>
+            </Grid>
+        </toolkit:BusyIndicator>
+    </Grid>
+</navigation:Page>

@@ -1,0 +1,54 @@
+﻿<navigation:Page x:Class="ProductManager.Views.ProductManagers.ImportantPartManager" 
+           xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+           xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+           xmlns:behaviors="clr-namespace:ProductManager"
+           mc:Ignorable="d"
+           xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+           d:DesignWidth="640" d:DesignHeight="480"
+           Title="重要部件">
+    <Grid x:Name="LayoutRoot">
+        <toolkit:BusyIndicator x:Name="BusyIndicator" IsBusy="{Binding IsBusy}" BusyContent="请稍候..." FontSize="13">
+            <Grid>
+                <Border>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="33" VerticalAlignment="Top">
+                        <Button Content="添加主要部件" Margin="2" Width="115" Style="{StaticResource BlueButton}" Command="{Binding OnAddImportantPart}"/>
+                        <Button Content="主要部件到货" Margin="2" Width="115" Style="{StaticResource OrangeButton}" Command="{Binding OnArivePart}"/>
+                        <Button Content="主要部件出厂" Margin="2" Width="115" Style="{StaticResource GreenButton}" Command="{Binding OnOutPart}"/>
+                        <Button Content="查看" Margin="2" Width="65" Style="{StaticResource BlueButton}" Command="{Binding OnViewImportantPart}"/>
+                        <Button Content="修改" Margin="2" Width="65" Style="{StaticResource BlueButton}" Command="{Binding OnModifyImportantPart}"/>
+                        <!--<Button Content="删除" Margin="2" Width="65" Style="{StaticResource BlueButton}" Command="{Binding }"/>-->
+                    </StackPanel>
+                </Border>
+                <sdk:DataGrid AutoGenerateColumns="False"
+                    Margin="0,33,0,0"
+                    ItemsSource="{Binding ImportantPartEntityList}"
+                    SelectedItem="{Binding SelectImportantPartEntity,Mode=TwoWay}"
+                    SelectionMode="Single"
+                    HeadersVisibility="All"
+                    GridLinesVisibility="All"
+                    FrozenColumnCount="1" VerticalAlignment="Stretch" >
+                    <i:Interaction.Behaviors>
+                        <behaviors:DoubleClickBehavior DoubleClickCommand="{Binding }" />
+                    </i:Interaction.Behaviors>
+                    <sdk:DataGrid.Columns>
+                        <sdk:DataGridTextColumn Binding="{Binding Path=ImportantPartName, Mode=OneWay}" Header="主要部件名称" IsReadOnly="True" Width="100" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=ImportantPartManufacturers, Mode=OneWay}" Header="厂家" IsReadOnly="True" Width="100" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=AriveTime, Mode=OneWay}" Header="到货时间" IsReadOnly="True" Width="100" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=AriveUserString, Mode=OneWay}" Header="填写人" IsReadOnly="True" Width="65" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=AriveInputTimeString, Mode=OneWay}" Header="填写时间" IsReadOnly="True" Width="100" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=PartOutTimeString, Mode=OneWay}" Header="部件出厂日期" IsReadOnly="True" Width="100" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=PartOutNumber, Mode=OneWay}" Header="部件出厂编号" IsReadOnly="True" Width="100" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=PartManuNumber, Mode=OneWay}" Header="厂家序列号" IsReadOnly="True" Width="100" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=PartOutputUserIdString, Mode=OneWay}" Header="填写人" IsReadOnly="True" Width="65" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=PartOutputInputTimeString, Mode=OneWay}" Header="填写时间" IsReadOnly="True" Width="100" />
+                    </sdk:DataGrid.Columns>
+                </sdk:DataGrid>
+            </Grid>
+        </toolkit:BusyIndicator>
+    </Grid>
+</navigation:Page>

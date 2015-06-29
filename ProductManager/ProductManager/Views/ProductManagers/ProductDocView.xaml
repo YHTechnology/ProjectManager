@@ -1,0 +1,100 @@
+﻿<navigation:Page xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+           x:Class="ProductManager.Views.ProductManagers.ProductDocView" 
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+           xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+           xmlns:behaviors="clr-namespace:ProductManager"
+           mc:Ignorable="d"
+           xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+           d:DesignWidth="640" d:DesignHeight="600"
+           Title="ProductDocView Page">
+    <Grid x:Name="LayoutRoot">
+        <toolkit:BusyIndicator x:Name="BusyIndicator" IsBusy="{Binding IsBusy}" BusyContent="请稍候..." FontSize="13">
+            <Grid Margin="0">
+                <Border>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="33" VerticalAlignment="Top">
+                        <CheckBox Content="过滤" Margin="2" IsChecked="{Binding IsFilter, Mode=TwoWay}" />
+                        <ComboBox Margin="2" Width="120" ItemsSource="{Binding FilterList}" IsEnabled="{Binding IsFilter}" SelectedItem="{Binding SelectFilerList, Mode=TwoWay}"/>
+                        <TextBox Margin="2" Text="{Binding FilterContent,Mode=TwoWay}" IsEnabled="{Binding IsFilter}" VerticalAlignment="Top" Width="165"/>
+                        <Button Margin="2" Content="刷新" Width="65" Style="{StaticResource OrangeButton}" Command="{Binding OnRefash}"/>
+                        <TextBlock Margin="2" Text="{Binding RecorderCount}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+                <sdk:DataGrid AutoGenerateColumns="False"
+                    HorizontalAlignment="Stretch"
+                    Margin="0,33,0,25"
+                    VerticalAlignment="Top"
+                    ItemsSource="{Binding ProjectEntityList}"
+                    SelectedItem="{Binding SelectProjectEntity,Mode=TwoWay}"
+                    SelectionMode="Single"
+                    HeadersVisibility="All"
+                    GridLinesVisibility="All"
+                    FrozenColumnCount="1">
+                    <i:Interaction.Behaviors>
+                        <behaviors:DoubleClickBehavior DoubleClickCommand="{Binding DoubleClickProject}" />
+                    </i:Interaction.Behaviors>
+                    <sdk:DataGrid.Columns>
+                        <sdk:DataGridTextColumn Binding="{Binding Path=ManufactureNumber, Mode=OneWay}" Header="生产令号" IsReadOnly="True" Width="100" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=ProjectName, Mode=OneWay}" Header="项目名称" IsReadOnly="True" Width="250" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=ModelNumber, Mode=OneWay}" Header="型号" IsReadOnly="True" Width="100" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=Remark, Mode=OneWay}" Header="备注" IsReadOnly="True" Width="350" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=YearNumber, Mode=OneWay}" Header="年份" IsReadOnly="True" Width="50" />
+                        <sdk:DataGridTextColumn Binding="{Binding Path=RecordDateString, Mode=OneWay}" Header="记录时间" IsReadOnly="True" Width="75" />
+                    </sdk:DataGrid.Columns>
+                </sdk:DataGrid>
+                <toolkit:Expander ExpandDirection="Up" VerticalAlignment="Bottom" Header="文档" IsExpanded="{Binding ShowExpander,Mode=TwoWay}">
+                    <toolkit:Expander.Content>
+                        <Grid Height="400" Background="#FF3C3C3C" >
+                            <sdk:DataGrid AutoGenerateColumns="False"
+                                          HorizontalAlignment="Stretch"
+                                          Margin="0,33,0,0"
+                                          ItemsSource="{Binding ProjectFilesEntityList}"
+                                          SelectionMode="Single"
+                                          HeadersVisibility="All"
+                                          GridLinesVisibility="All"
+                                          FrozenColumnCount="1">
+                                <sdk:DataGrid.Columns>
+                                    <sdk:DataGridTemplateColumn Header="">
+                                        <sdk:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Content="下载" Style="{StaticResource OrangeButton}" Command="{Binding OnDownload}" IsEnabled="{Binding CanDownload}" />
+                                            </DataTemplate>
+                                        </sdk:DataGridTemplateColumn.CellTemplate>
+                                    </sdk:DataGridTemplateColumn>
+                                    <sdk:DataGridTextColumn Binding="{Binding ManufactureNumber, Mode=OneWay}" Header="生产令号" IsReadOnly="True" Width="100" />
+                                    <sdk:DataGridTextColumn Binding="{Binding FileTypeName, Mode=OneWay}" Header="文件类型" IsReadOnly="True" Width="100" />
+                                    <sdk:DataGridTextColumn Binding="{Binding FileName, Mode=OneWay}" Header="文件名称" IsReadOnly="True" Width="150" />
+                                    <sdk:DataGridTextColumn Binding="{Binding DepartmentName, Mode=OneWay}" Header="部门" IsReadOnly="True" Width="150" />
+                                    <sdk:DataGridTextColumn Binding="{Binding UserName, Mode=OneWay}" Header="上传人" IsReadOnly="True" Width="100" />
+                                    <sdk:DataGridTextColumn Binding="{Binding FileDiscript, Mode=OneWay}" Header="备注" IsReadOnly="True" Width="150" />
+                                    <sdk:DataGridTextColumn Binding="{Binding FileUpdateTime, Mode=OneWay, StringFormat=yyyy-MM-dd}" Header="上传日期" IsReadOnly="True" Width="150" />
+                                    <sdk:DataGridTextColumn Binding="{Binding Path=FileBytesString, Mode=OneWay}" Header="文件大小" IsReadOnly="True" Width="100" />
+                                    <sdk:DataGridTextColumn Binding="{Binding FileDeleteString, Mode=OneWay}" Header="删除标记" IsReadOnly="True" Width="80" />
+                                    <sdk:DataGridTemplateColumn Width="150">
+                                        <sdk:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ProgressBar Value="{Binding DownloadPer}" Height="30" Width="150" Visibility="{Binding DownLoading}"/>
+                                            </DataTemplate>
+                                        </sdk:DataGridTemplateColumn.CellTemplate>
+                                    </sdk:DataGridTemplateColumn>
+                                </sdk:DataGrid.Columns>
+                            </sdk:DataGrid>
+                            <Border BorderThickness="1" Background="#FF707176" Height="26" VerticalAlignment="Top" Margin="12,8,277,0" BorderBrush="#FF707176" CornerRadius="3,3,0,0">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                    <Image Height="16" Width="16" Margin="25,0,0,0" Source="/ProductManager;component/Images/cancel.png" MouseLeftButtonDown="Image_MouseLeftButtonDown_1" />
+                                    <TextBlock Text="生产令号：" Margin="15,0,0,0"/>
+                                    <TextBlock Text="{Binding SelectProjectEntity.ManufactureNumber}"/>
+                                    <TextBlock Text="项目名称" Margin="15,0,0,0" />
+                                    <TextBlock Text="{Binding SelectProjectEntity.ProjectName}"/>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </toolkit:Expander.Content>
+                </toolkit:Expander>
+            </Grid>
+        </toolkit:BusyIndicator>
+    </Grid>
+</navigation:Page>

@@ -1,0 +1,96 @@
+﻿<controls:ChildWindow x:Class="ProductManager.Views.ProductManagers.LinkResponsePersonWindow"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"      
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+           xmlns:ProductManagers="clr-namespace:ProductManager.Views.ProductManagers"
+           FontFamily="{StaticResource ContentFontFamily}" 
+           FontSize="{StaticResource ContentFontSize}" 
+           Style="{StaticResource JPBChildWindow}"
+           mc:Ignorable="d"
+           HasCloseButton="False" d:DesignHeight="500" Width="1010.087" Loaded="ChildWindow_Loaded_1">
+    <controls:ChildWindow.Resources>
+        <ProductManagers:LinkResponsePersonConvert x:Key="LinkResponsePersonConvert" />
+    </controls:ChildWindow.Resources>
+    <toolkit:BusyIndicator x:Name="BusyIndicator"  IsBusy="{Binding IsBusy}" BusyContent="请稍候..." FontSize="13" >
+        <Grid x:Name="LayoutRoot" Margin="2">
+            <RadioButton x:Name="linkProjectChexkBox" IsChecked="{Binding LinkTypes, Mode=TwoWay, ConverterParameter=LinkProject, 
+             Converter={StaticResource LinkResponsePersonConvert}}"  Foreground="Black"  Content="关联项目负责人" GroupName="First Group" HorizontalAlignment="Left" Margin="492,14,0,0" VerticalAlignment="Top"/>
+            <!-- Checked="HandleCheck" -->
+            <RadioButton x:Name="linkPersonChexkBox" IsChecked="{Binding LinkTypes, Mode=TwoWay, ConverterParameter=LinkPerson, 
+             Converter={StaticResource LinkResponsePersonConvert}}" Foreground="Black" GroupName="First Group" Content="关联选择负责人（按住Ctrl可多选）" HorizontalAlignment="Left" Margin="615,14,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="CancelButton" Content="取消" Command="{Binding OnCancel}" Width="62" Height="28" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,5,14,0"/>
+            <Button x:Name="OKButton" Content="确认" Command="{Binding OnOk}"  Width="62" Height="28" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,5,81,0" RenderTransformOrigin="0.807,0.654"/>
+            <sdk:DataGrid x:Name="projectDataGrid" 
+                          HorizontalAlignment="Left" 
+                          Height="406" Margin="10,39,0,0" 
+                          VerticalAlignment="Top" 
+                          Width="302"
+                          AutoGenerateColumns="False"
+                    ItemsSource="{Binding ProjectEntityList}"
+                    SelectedItem="{Binding SelectProjectEntity,Mode=TwoWay}"
+                    SelectionMode="Single"
+                    HeadersVisibility="All"
+                    GridLinesVisibility="All"
+                    FrozenColumnCount="1">
+                <sdk:DataGrid.Columns>
+                    <sdk:DataGridTextColumn Binding="{Binding Path=ManufactureNumber, Mode=OneWay}" Header="生产令号" IsReadOnly="True" Width="100" />
+                    <sdk:DataGridTextColumn Binding="{Binding Path=ProjectName, Mode=OneWay}" Header="项目名称" IsReadOnly="True" Width="250" />
+                    <sdk:DataGridTextColumn Binding="{Binding Path=ModelNumber, Mode=OneWay}" Header="型号" IsReadOnly="True" Width="100" />
+                    <sdk:DataGridTextColumn Binding="{Binding Path=Remark, Mode=OneWay}" Header="备注" IsReadOnly="True" Width="250"/>
+                    <sdk:DataGridTextColumn Binding="{Binding Path=YearNumber, Mode=OneWay}" Header="年份" IsReadOnly="True" Width="50" />
+                    <sdk:DataGridTextColumn Binding="{Binding Path=RecordDateString, Mode=OneWay}" Header="记录时间" IsReadOnly="True" Width="75" />
+                    <sdk:DataGridTextColumn Binding="{Binding Path=ContractNumber}" Header="项目合同号" IsReadOnly="True" Width="75" />
+                </sdk:DataGrid.Columns>
+            </sdk:DataGrid>
+            <Button Content="添加" HorizontalAlignment="Left" Margin="318,161,0,0" VerticalAlignment="Top" Width="46" Style="{StaticResource OrangeButton}" Command="{Binding OnAddToProject}"/>
+            <Button Content="移除" HorizontalAlignment="Left" Margin="318,196,0,0" VerticalAlignment="Top" Width="46" Style="{StaticResource OrangeButton}" Command="{Binding OnRemoveProject}"/>
+            <sdk:Label Content="应用到项目" HorizontalAlignment="Left" Margin="369,15,0,0" VerticalAlignment="Top" Width="90"/>
+            <sdk:DataGrid x:Name="projectDataGridLink" 
+                          HorizontalAlignment="Left" 
+                          Height="406" Margin="369,42,0,0" 
+                          VerticalAlignment="Top" 
+                          Width="191"
+                          AutoGenerateColumns="False"
+                    ItemsSource="{Binding ProjectLinkEntityList}"
+                    SelectedItem="{Binding SelectLinkProjectEntity,Mode=TwoWay}"
+                    SelectionMode="Single"
+                    HeadersVisibility="All"
+                    GridLinesVisibility="All"
+                    FrozenColumnCount="1">
+                <sdk:DataGrid.Columns>
+                    <sdk:DataGridTextColumn Binding="{Binding Path=ManufactureNumber, Mode=OneWay}" Header="生产令号" IsReadOnly="True" Width="100" />
+                    <sdk:DataGridTextColumn Binding="{Binding Path=ProjectName, Mode=OneWay}" Header="项目名称" IsReadOnly="True" Width="250" />
+                    <sdk:DataGridTextColumn Binding="{Binding Path=ModelNumber, Mode=OneWay}" Header="型号" IsReadOnly="True" Width="100" />
+                    <sdk:DataGridTextColumn Binding="{Binding Path=Remark, Mode=OneWay}" Header="备注" IsReadOnly="True" Width="250"/>
+                    <sdk:DataGridTextColumn Binding="{Binding Path=YearNumber, Mode=OneWay}" Header="年份" IsReadOnly="True" Width="50" />
+                    <sdk:DataGridTextColumn Binding="{Binding Path=RecordDateString, Mode=OneWay}" Header="记录时间" IsReadOnly="True" Width="75" />
+                    <sdk:DataGridTextColumn Binding="{Binding Path=ContractNumber}" Header="项目合同号" IsReadOnly="True" Width="75" />
+                </sdk:DataGrid.Columns>
+            </sdk:DataGrid>
+            <sdk:DataGrid x:Name="projectPersonDataGrid" 
+                          IsEnabled="{Binding IsEnable}"  
+                          HorizontalAlignment="Left" Height="406" 
+                          Margin="565,42,0,0" VerticalAlignment="Top" Width="415"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding ProjectResponsibleEntityList}"
+                          SelectedItem="{Binding SelectProjectResponsibleEntity,Mode=TwoWay}"
+                          SelectionMode="Extended"
+                          HeadersVisibility="All"
+                          GridLinesVisibility="All">
+                <sdk:DataGrid.Columns>
+                    <sdk:DataGridTextColumn Binding="{Binding Path=DepartmentName, Mode=OneWay}" Header="部门" IsReadOnly="True" Width="150" />
+                    <sdk:DataGridTextColumn Binding="{Binding Path=ResponsiblePersionName, Mode=OneWay}" Header="姓名" IsReadOnly="True" Width="150" />
+                    <sdk:DataGridTextColumn Binding="{Binding Path=UserPhoneNumber, Mode=OneWay}" Header="联系电话" IsReadOnly="True" Width="150" />
+                    <sdk:DataGridTextColumn Binding="{Binding Path=Descript, Mode=OneWay}" Header="备注" IsReadOnly="True" Width="150" />
+                </sdk:DataGrid.Columns>
+            </sdk:DataGrid>
+            <sdk:Label HorizontalAlignment="Left" Margin="11,12,0,0" VerticalAlignment="Top" Content="输入生产令号或项目名称："/>
+            <TextBox HorizontalAlignment="Left" Height="30" Margin="167,5,0,0" Text="{Binding FilterContext, Mode=TwoWay}" VerticalAlignment="Top" Width="75"/>
+            <Button Content="刷新" HorizontalAlignment="Left" Margin="247,6,0,0" VerticalAlignment="Top" Width="65" Style="{StaticResource BlueButton}" Command="{Binding OnReflash}"/>
+        </Grid>
+    </toolkit:BusyIndicator>
+</controls:ChildWindow>
